@@ -1,51 +1,51 @@
 @import 'tailwindcss';
 
-/* ── Raleway variable font (all weights from single file) ── */
+/* ── Raleway & Inter variable fonts (Google Fonts CDN) ── */
 @font-face {
   font-family: "Raleway:Light";
-  src: url("https://static.figma.com/font/Raleway_wght__1") format("woff2");
+  src: url("https://fonts.gstatic.com/s/raleway/v37/1Ptug8zYS_SKggPNyC0IT4ttDfA.woff2") format("woff2");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Raleway:Regular";
-  src: url("https://static.figma.com/font/Raleway_wght__1") format("woff2");
+  src: url("https://fonts.gstatic.com/s/raleway/v37/1Ptug8zYS_SKggPNyC0IT4ttDfA.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Raleway:Medium";
-  src: url("https://static.figma.com/font/Raleway_wght__1") format("woff2");
+  src: url("https://fonts.gstatic.com/s/raleway/v37/1Ptug8zYS_SKggPNyC0IT4ttDfA.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Raleway:SemiBold";
-  src: url("https://static.figma.com/font/Raleway_wght__1") format("woff2");
+  src: url("https://fonts.gstatic.com/s/raleway/v37/1Ptug8zYS_SKggPNyC0IT4ttDfA.woff2") format("woff2");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Raleway:Bold";
-  src: url("https://static.figma.com/font/Raleway_wght__1") format("woff2");
+  src: url("https://fonts.gstatic.com/s/raleway/v37/1Ptug8zYS_SKggPNyC0IT4ttDfA.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Raleway:Black";
-  src: url("https://static.figma.com/font/Raleway_wght__1") format("woff2");
+  src: url("https://fonts.gstatic.com/s/raleway/v37/1Ptug8zYS_SKggPNyC0IT4ttDfA.woff2") format("woff2");
   font-weight: 900;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Inter:Regular";
-  src: url("https://static.figma.com/font/Inter_1") format("woff2");
+  src: url("https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hjp-Ek-_eeA.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;

@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 import LogoSVG from "@/imports/Logo/index"
 
 /* ── Images ── */
@@ -164,7 +165,11 @@ function Nav({ onOpenContact }: { onOpenContact: () => void }) {
               >
                 {l.label}
                 {isActive && (
-                  <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#155dfc] rounded-full" />
+                  <motion.span
+                    layoutId="activeNavIndicator"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#155dfc] rounded-full"
+                  />
                 )}
               </a>
             )
@@ -172,7 +177,9 @@ function Nav({ onOpenContact }: { onOpenContact: () => void }) {
         </div>
 
         {/* CTA */}
-        <button
+        <motion.button
+          whileHover={{ scale: 1.03 }}
+          whileTap={{ scale: 0.97 }}
           onClick={onOpenContact}
           type="button"
           className="hidden md:flex bg-[#1a1a1a] text-white font-['Raleway:Medium',sans-serif] font-medium text-[11.2px] tracking-[1.12px] uppercase items-center gap-2 px-5 py-2.5 rounded-full hover:bg-[#155dfc] transition-colors duration-300 shadow-md cursor-pointer"
@@ -187,7 +194,7 @@ function Nav({ onOpenContact }: { onOpenContact: () => void }) {
               strokeLinejoin="round"
             />
           </svg>
-        </button>
+        </motion.button>
 
         {/* Mobile hamburger */}
         <button
@@ -213,34 +220,43 @@ function Nav({ onOpenContact }: { onOpenContact: () => void }) {
         </button>
 
         {/* Mobile drawer */}
-        {open && (
-          <div className="absolute top-full left-0 right-0 bg-[rgba(243,243,241,0.98)] backdrop-blur-md py-6 px-6 flex flex-col gap-5 shadow-lg md:hidden border-t border-[rgba(0,0,0,0.05)]">
-            {links.map((l) => (
-              <a
-                key={l.label}
-                href={l.href}
-                onClick={() => setOpen(false)}
-                className={`font-['Raleway:Medium',sans-serif] text-base tracking-[2px] uppercase transition-colors ${
-                  activeSection === l.id
-                    ? "font-bold text-[#155dfc]"
-                    : "font-medium text-[#03191d] hover:text-[#155dfc]"
-                }`}
-              >
-                {l.label}
-              </a>
-            ))}
-            <button
-              type="button"
-              onClick={() => {
-                setOpen(false)
-                onOpenContact()
-              }}
-              className="bg-[#1a1a1a] text-white font-['Raleway:Medium',sans-serif] font-medium text-[11px] tracking-[1.1px] uppercase flex items-center gap-2 px-5 py-3 rounded-full self-start hover:bg-[#155dfc] transition-colors duration-300 cursor-pointer"
+        <AnimatePresence>
+          {open && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+              className="absolute top-full left-0 right-0 bg-[rgba(243,243,241,0.98)] backdrop-blur-md py-6 px-6 flex flex-col gap-5 shadow-lg md:hidden border-t border-[rgba(0,0,0,0.05)]"
             >
-              Falar Comigo
-            </button>
-          </div>
-        )}
+              {links.map((l) => (
+                <a
+                  key={l.label}
+                  href={l.href}
+                  onClick={() => setOpen(false)}
+                  className={`font-['Raleway:Medium',sans-serif] text-base tracking-[2px] uppercase transition-colors ${
+                    activeSection === l.id
+                      ? "font-bold text-[#155dfc]"
+                      : "font-medium text-[#03191d] hover:text-[#155dfc]"
+                  }`}
+                >
+                  {l.label}
+                </a>
+              ))}
+              <motion.button
+                whileTap={{ scale: 0.97 }}
+                type="button"
+                onClick={() => {
+                  setOpen(false)
+                  onOpenContact()
+                }}
+                className="bg-[#1a1a1a] text-white font-['Raleway:Medium',sans-serif] font-medium text-[11px] tracking-[1.1px] uppercase flex items-center gap-2 px-5 py-3 rounded-full self-start hover:bg-[#155dfc] transition-colors duration-300 cursor-pointer"
+              >
+                Falar Comigo
+              </motion.button>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
     </>
   )
@@ -1099,7 +1115,9 @@ function ProjectCard({
         <div className="font-['Raleway:Regular',sans-serif] font-normal text-[16px] leading-[1.625] text-[rgba(3,25,29,0.7)] mb-8">
           {project.description}
         </div>
-        <button
+        <motion.button
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
           onClick={() => onSelectProject(project)}
           type="button"
           className="self-start border-[1.8px] border-[#03191d] flex items-center gap-3 px-8 py-4 rounded-full font-['Raleway:Bold',sans-serif] font-bold text-[12px] tracking-[1.2px] uppercase text-[#03191d] hover:bg-[#03191d] hover:text-white transition-all duration-300 group cursor-pointer shadow-sm hover:shadow-md"
@@ -1114,7 +1132,7 @@ function ProjectCard({
               strokeLinejoin="round"
             />
           </svg>
-        </button>
+        </motion.button>
       </div>
     </div>
   )
@@ -1182,8 +1200,10 @@ function ProjectsSection({
             {categories.map((cat) => {
               const active = filter === cat.id
               return (
-                <button
+                <motion.button
                   key={cat.id}
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
                   onClick={() => setFilter(cat.id as any)}
                   type="button"
                   className={`flex items-center gap-2 px-4 py-2 rounded-full font-['Raleway:Bold',sans-serif] text-[11px] tracking-wider uppercase transition-all duration-200 cursor-pointer ${
@@ -1202,21 +1222,28 @@ function ProjectsSection({
                   >
                     {cat.count}
                   </span>
-                </button>
+                </motion.button>
               )
             })}
           </div>
         </div>
 
-        <div className="flex flex-col gap-20 md:gap-28">
-          {filteredProjects.map((p) => (
-            <ProjectCard
-              key={p.id}
-              project={p}
-              onSelectProject={onSelectProject}
-            />
-          ))}
-        </div>
+        <motion.div layout className="flex flex-col gap-20 md:gap-28">
+          <AnimatePresence mode="popLayout">
+            {filteredProjects.map((p) => (
+              <motion.div
+                key={p.id}
+                layout
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.98 }}
+                transition={{ duration: 0.3 }}
+              >
+                <ProjectCard project={p} onSelectProject={onSelectProject} />
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
       </div>
     </section>
   )
@@ -1926,15 +1953,23 @@ function CaseStudyModal({
   if (!project) return null
 
   return (
-    <div
-      className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 md:p-8 bg-[rgba(3,25,29,0.75)] backdrop-blur-md animate-modal-backdrop overflow-y-auto"
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.22 }}
+      className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 md:p-8 bg-[rgba(3,25,29,0.75)] backdrop-blur-md overflow-y-auto"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
       aria-label={`Estudo de caso: ${project.title}`}
     >
-      <div
-        className="relative w-full max-w-4xl bg-white rounded-[24px] shadow-2xl overflow-hidden my-auto max-h-[92vh] flex flex-col animate-modal-card"
+      <motion.div
+        initial={{ opacity: 0, scale: 0.96, y: 16 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.96, y: 16 }}
+        transition={{ type: "spring", damping: 26, stiffness: 320 }}
+        className="relative w-full max-w-4xl bg-white rounded-[24px] shadow-2xl overflow-hidden my-auto max-h-[92vh] flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Sticky Modal Header */}
@@ -2189,8 +2224,8 @@ function CaseStudyModal({
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   )
 }
 
@@ -2216,15 +2251,23 @@ function CurriculumModal({
   if (!isOpen) return null
 
   return (
-    <div
-      className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 md:p-8 bg-[rgba(3,25,29,0.75)] backdrop-blur-md animate-modal-backdrop overflow-y-auto"
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.22 }}
+      className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 md:p-8 bg-[rgba(3,25,29,0.75)] backdrop-blur-md overflow-y-auto"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
       aria-label="Currículo de Raoni Burali"
     >
-      <div
-        className="relative w-full max-w-4xl bg-white rounded-[24px] shadow-2xl overflow-hidden my-auto max-h-[92vh] flex flex-col animate-modal-card print-curriculum"
+      <motion.div
+        initial={{ opacity: 0, scale: 0.96, y: 16 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.96, y: 16 }}
+        transition={{ type: "spring", damping: 26, stiffness: 320 }}
+        className="relative w-full max-w-4xl bg-white rounded-[24px] shadow-2xl overflow-hidden my-auto max-h-[92vh] flex flex-col print-curriculum"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Header */}
@@ -2436,8 +2479,8 @@ function CurriculumModal({
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   )
 }
 
@@ -2479,15 +2522,23 @@ function ContactModal({
   }
 
   return (
-    <div
-      className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 bg-[rgba(3,25,29,0.75)] backdrop-blur-md animate-modal-backdrop overflow-y-auto"
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.22 }}
+      className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 bg-[rgba(3,25,29,0.75)] backdrop-blur-md overflow-y-auto"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
       aria-label="Falar com Raoni Burali"
     >
-      <div
-        className="relative w-full max-w-lg bg-white rounded-[24px] shadow-2xl overflow-hidden my-auto p-6 sm:p-8 flex flex-col gap-6 animate-modal-card"
+      <motion.div
+        initial={{ opacity: 0, scale: 0.96, y: 16 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.96, y: 16 }}
+        transition={{ type: "spring", damping: 26, stiffness: 320 }}
+        className="relative w-full max-w-lg bg-white rounded-[24px] shadow-2xl overflow-hidden my-auto p-6 sm:p-8 flex flex-col gap-6"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
@@ -2674,8 +2725,8 @@ function ContactModal({
             </button>
           </form>
         )}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   )
 }
 
@@ -2695,7 +2746,9 @@ function FloatingNav({ onOpenContact }: { onOpenContact: () => void }) {
 
   return (
     <div className="fixed bottom-6 right-6 z-40 flex items-center gap-2 bg-[#03191d]/90 backdrop-blur-md text-white p-1.5 rounded-full shadow-2xl border border-white/10 transition-all duration-300">
-      <button
+      <motion.button
+        whileHover={{ scale: 1.03 }}
+        whileTap={{ scale: 0.97 }}
         type="button"
         onClick={onOpenContact}
         className="bg-[#155dfc] hover:bg-[#155dfc]/90 text-white font-['Raleway:Bold',sans-serif] text-[10px] tracking-wider uppercase px-4 py-2.5 rounded-full transition-all flex items-center gap-1.5 cursor-pointer shadow-sm"
@@ -2703,9 +2756,11 @@ function FloatingNav({ onOpenContact }: { onOpenContact: () => void }) {
       >
         <span className="w-1.5 h-1.5 rounded-full bg-[#00e7ff] animate-pulse" />
         Falar Comigo
-      </button>
+      </motion.button>
 
-      <button
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
         type="button"
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         className="p-2.5 rounded-full hover:bg-white/10 text-white transition-colors cursor-pointer"
@@ -2721,19 +2776,28 @@ function FloatingNav({ onOpenContact }: { onOpenContact: () => void }) {
             strokeLinejoin="round"
           />
         </svg>
-      </button>
+      </motion.button>
     </div>
   )
 }
 
 /* ── Toast Notification ── */
 function ToastNotification({ message }: { message: string | null }) {
-  if (!message) return null
   return (
-    <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-[110] bg-[#03191d] text-white px-6 py-3 rounded-full shadow-2xl flex items-center gap-2.5 border border-[#155dfc]/40 animate-modal-card text-[12px] font-['Raleway:Bold',sans-serif] tracking-wide">
-      <span className="text-[#00e7ff] font-bold">✓</span>
-      <span>{message}</span>
-    </div>
+    <AnimatePresence>
+      {message && (
+        <motion.div
+          initial={{ opacity: 0, y: 24, scale: 0.95 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: 24, scale: 0.95 }}
+          transition={{ duration: 0.25, ease: "easeOut" }}
+          className="fixed bottom-8 left-1/2 -translate-x-1/2 z-[110] bg-[#03191d] text-white px-6 py-3 rounded-full shadow-2xl flex items-center gap-2.5 border border-[#155dfc]/40 text-[12px] font-['Raleway:Bold',sans-serif] tracking-wide"
+        >
+          <span className="text-[#00e7ff] font-bold">✓</span>
+          <span>{message}</span>
+        </motion.div>
+      )}
+    </AnimatePresence>
   )
 }
 
@@ -2810,28 +2874,43 @@ export default function App() {
       />
       <Footer />
 
-      {/* Interactive Modals */}
-      <CaseStudyModal
-        project={selectedProject}
-        currentIndex={currentProjectIndex}
-        totalProjects={allProjectsData.length}
-        onClose={() => setSelectedProject(null)}
-        onNext={handleNextProject}
-        onPrev={handlePrevProject}
-        onOpenContact={() => setContactOpen(true)}
-      />
+      {/* Interactive Modals with Framer Motion AnimatePresence */}
+      <AnimatePresence>
+        {selectedProject && (
+          <CaseStudyModal
+            key="case-study-modal"
+            project={selectedProject}
+            currentIndex={currentProjectIndex}
+            totalProjects={allProjectsData.length}
+            onClose={() => setSelectedProject(null)}
+            onNext={handleNextProject}
+            onPrev={handlePrevProject}
+            onOpenContact={() => setContactOpen(true)}
+          />
+        )}
+      </AnimatePresence>
 
-      <CurriculumModal
-        isOpen={curriculumOpen}
-        onClose={() => setCurriculumOpen(false)}
-        onOpenContact={() => setContactOpen(true)}
-      />
+      <AnimatePresence>
+        {curriculumOpen && (
+          <CurriculumModal
+            key="curriculum-modal"
+            isOpen={curriculumOpen}
+            onClose={() => setCurriculumOpen(false)}
+            onOpenContact={() => setContactOpen(true)}
+          />
+        )}
+      </AnimatePresence>
 
-      <ContactModal
-        isOpen={contactOpen}
-        onClose={() => setContactOpen(false)}
-        onCopyEmail={handleCopyEmail}
-      />
+      <AnimatePresence>
+        {contactOpen && (
+          <ContactModal
+            key="contact-modal"
+            isOpen={contactOpen}
+            onClose={() => setContactOpen(false)}
+            onCopyEmail={handleCopyEmail}
+          />
+        )}
+      </AnimatePresence>
 
       <FloatingNav onOpenContact={() => setContactOpen(true)} />
 
