@@ -1,0 +1,189 @@
+@import 'tailwindcss';
+
+/* ── Raleway variable font (all weights from single file) ── */
+@font-face {
+  font-family: "Raleway:Light";
+  src: url("https://static.figma.com/font/Raleway_wght__1") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Raleway:Regular";
+  src: url("https://static.figma.com/font/Raleway_wght__1") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Raleway:Medium";
+  src: url("https://static.figma.com/font/Raleway_wght__1") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Raleway:SemiBold";
+  src: url("https://static.figma.com/font/Raleway_wght__1") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Raleway:Bold";
+  src: url("https://static.figma.com/font/Raleway_wght__1") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Raleway:Black";
+  src: url("https://static.figma.com/font/Raleway_wght__1") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter:Regular";
+  src: url("https://static.figma.com/font/Inter_1") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+/* Scrollbar hidden by default */
+html {
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+  scroll-padding-top: 96px;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Marquee animation */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 28s linear infinite;
+  will-change: transform;
+}
+
+/* Scroll-reveal base state */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delays */
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-400 { transition-delay: 400ms; }
+.delay-500 { transition-delay: 500ms; }
+
+/* Float pulse for hero decorative elements */
+@keyframes floatA {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50%       { transform: translateY(-6px) rotate(-2deg); }
+}
+@keyframes floatB {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+@keyframes floatC {
+  0%, 100% { transform: translateY(0) rotate(12deg); }
+  50%       { transform: translateY(-10px) rotate(12deg); }
+}
+@keyframes floatD {
+  0%, 100% { transform: translateY(0) rotate(15deg); }
+  50%       { transform: translateY(-6px) rotate(15deg); }
+}
+.animate-float-a { animation: floatA 3.8s ease-in-out infinite; }
+.animate-float-b { animation: floatB 4.5s ease-in-out infinite; }
+.animate-float-c { animation: floatC 5.2s ease-in-out infinite; }
+.animate-float-d { animation: floatD 4s ease-in-out infinite 0.6s; }
+
+/* Persona hover lift — matches badge float feel */
+
+/* Hero entrance */
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-hero { animation: fadeSlideUp 0.9s ease forwards; }
+.animate-hero-d1 { animation: fadeSlideUp 0.9s ease 0.15s both; }
+.animate-hero-d2 { animation: fadeSlideUp 0.9s ease 0.3s both; }
+.animate-hero-d3 { animation: fadeSlideUp 0.9s ease 0.45s both; }
+.animate-hero-d4 { animation: fadeSlideUp 0.9s ease 0.6s both; }
+
+/* ── Modal overlay & card animations ── */
+@keyframes modalBackdropFade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes modalContentScale {
+  from { opacity: 0; transform: scale(0.96) translateY(12px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.animate-modal-backdrop {
+  animation: modalBackdropFade 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-modal-card {
+  animation: modalContentScale 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Modal internal scrollbar */
+.modal-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(21, 93, 252, 0.3) transparent;
+}
+.modal-scroll::-webkit-scrollbar {
+  display: block;
+  width: 6px;
+}
+.modal-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.modal-scroll::-webkit-scrollbar-thumb {
+  background: rgba(21, 93, 252, 0.3);
+  border-radius: 9999px;
+}
+.modal-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(21, 93, 252, 0.6);
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .print-curriculum, .print-curriculum * {
+    visibility: visible;
+  }
+  .print-curriculum {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background: white !important;
+    color: black !important;
+  }
+}
+

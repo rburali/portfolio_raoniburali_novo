@@ -1,0 +1,15 @@
+{
+  "title": "Raoni Burali — UX / Product Designer Sênior | Portfólio",
+  "language": "pt-BR",
+  "description": "Design não é só sobre interfaces e marcas. \nÉ sobre pessoas dispostas a fazer diferença!\n\nUX Designer Sênior com mais de 20 anos criando \nexperiências digitais, marcas, sites e softwares \nque unem estratégia, profundidade e valor.",
+  "icons": {
+    "icon": "/.figma/make/favicon.png"
+  },
+  "openGraph": {
+    "image": "/.figma/make/social-image.png"
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
