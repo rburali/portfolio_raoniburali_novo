@@ -1043,10 +1043,8 @@ const allProjectsData: Project[] = [
 
 function ProjectCard({
   project,
-  onSelectProject,
 }: {
   project: Project
-  onSelectProject: (project: Project) => void
 }) {
   const { ref, visible } = useReveal()
   return (
@@ -1056,22 +1054,12 @@ function ProjectCard({
         visible ? "in-view" : ""
       } group grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center`}
     >
-      {/* Image side - clickable */}
+      {/* Image side */}
       <div
-        onClick={() => onSelectProject(project)}
         className={`${
           project.reversed ? "md:order-last" : ""
-        } relative w-full aspect-[4/3] rounded-[20px] overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-shadow duration-300`}
+        } relative w-full aspect-[4/3] rounded-[20px] overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300`}
         style={{ backgroundColor: project.imgBg }}
-        role="button"
-        tabIndex={0}
-        onKeyDown={(e) => {
-          if (e.key === "Enter" || e.key === " ") {
-            e.preventDefault()
-            onSelectProject(project)
-          }
-        }}
-        aria-label={`Ver detalhes do projeto ${project.title}`}
       >
         {project.logoElement && (
           <div className="absolute top-6 left-6 z-10">
@@ -1119,9 +1107,8 @@ function ProjectCard({
         <motion.button
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
-          onClick={() => onSelectProject(project)}
           type="button"
-          className="self-start border-[1.8px] border-[#03191d] flex items-center gap-3 px-8 py-4 rounded-full font-['Raleway:Bold',sans-serif] font-bold text-[12px] tracking-[1.2px] uppercase text-[#03191d] hover:bg-[#03191d] hover:text-white transition-all duration-300 group cursor-pointer shadow-sm hover:shadow-md"
+          className="self-start border-[1.8px] border-[#03191d] flex items-center gap-3 px-8 py-4 rounded-full font-['Raleway:Bold',sans-serif] font-bold text-[12px] tracking-[1.2px] uppercase text-[#03191d] hover:bg-[#03191d] hover:text-white transition-all duration-300 group shadow-sm hover:shadow-md"
         >
           Ver projeto
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -1140,11 +1127,7 @@ function ProjectCard({
 }
 
 /* ── Projects Section ── */
-function ProjectsSection({
-  onSelectProject,
-}: {
-  onSelectProject: (project: Project) => void
-}) {
+function ProjectsSection() {
   const { ref, visible } = useReveal(0.1)
   const [filter, setFilter] =
     useState<"all" | "landing-page" | "produto" | "processos">("all")
@@ -1240,7 +1223,7 @@ function ProjectsSection({
                 exit={{ opacity: 0, scale: 0.98 }}
                 transition={{ duration: 0.3 }}
               >
-                <ProjectCard project={p} onSelectProject={onSelectProject} />
+                <ProjectCard project={p} />
               </motion.div>
             ))}
           </AnimatePresence>
@@ -2011,313 +1994,7 @@ function Footer() {
   )
 }
 
-/* ── Case Study Modal Component ── */
-function CaseStudyModal({
-  project,
-  currentIndex,
-  totalProjects,
-  onClose,
-  onNext,
-  onPrev,
-  onOpenContact,
-}: {
-  project: Project | null
-  currentIndex: number
-  totalProjects: number
-  onClose: () => void
-  onNext: () => void
-  onPrev: () => void
-  onOpenContact: () => void
-}) {
-  useEffect(() => {
-    if (!project) return
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose()
-      if (e.key === "ArrowRight") onNext()
-      if (e.key === "ArrowLeft") onPrev()
-    }
-    window.addEventListener("keydown", handleKeyDown)
-    return () => window.removeEventListener("keydown", handleKeyDown)
-  }, [project, onClose, onNext, onPrev])
 
-  if (!project) return null
-
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.22 }}
-      className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 md:p-8 bg-[rgba(3,25,29,0.75)] backdrop-blur-md overflow-y-auto"
-      onClick={onClose}
-      role="dialog"
-      aria-modal="true"
-      aria-label={`Estudo de caso: ${project.title}`}
-    >
-      <motion.div
-        initial={{ opacity: 0, scale: 0.96, y: 16 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        exit={{ opacity: 0, scale: 0.96, y: 16 }}
-        transition={{ type: "spring", damping: 26, stiffness: 320 }}
-        className="relative w-full max-w-4xl bg-white rounded-[24px] shadow-2xl overflow-hidden my-auto max-h-[92vh] flex flex-col"
-        onClick={(e) => e.stopPropagation()}
-      >
-        {/* Sticky Modal Header */}
-        <div className="sticky top-0 z-20 bg-white/95 backdrop-blur-md border-b border-[rgba(3,25,29,0.08)] px-6 py-4 flex items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <span className="font-['Raleway:Bold',sans-serif] text-[10px] tracking-[2px] uppercase text-[#155dfc] bg-[#155dfc]/10 px-3 py-1 rounded-full">
-              {project.category}
-            </span>
-            <span className="text-[12px] font-['Raleway:Medium',sans-serif] text-[#6a7282] hidden sm:inline">
-              Caso {currentIndex + 1} de {totalProjects}
-            </span>
-          </div>
-
-          <div className="flex items-center gap-2">
-            {/* Prev / Next buttons inside header */}
-            <div className="flex items-center bg-[#f3f3f1] rounded-full p-1 mr-2">
-              <button
-                onClick={onPrev}
-                type="button"
-                className="p-1.5 rounded-full hover:bg-white text-[#03191d] transition-colors cursor-pointer"
-                title="Projeto anterior (Seta ←)"
-                aria-label="Projeto anterior"
-              >
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                  <path
-                    d="M8.5 10.5L5 7L8.5 3.5"
-                    stroke="currentColor"
-                    strokeWidth="1.7"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </button>
-              <button
-                onClick={onNext}
-                type="button"
-                className="p-1.5 rounded-full hover:bg-white text-[#03191d] transition-colors cursor-pointer"
-                title="Próximo projeto (Seta →)"
-                aria-label="Próximo projeto"
-              >
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                  <path
-                    d="M5.5 3.5L9 7L5.5 10.5"
-                    stroke="currentColor"
-                    strokeWidth="1.7"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </button>
-            </div>
-
-            {/* Close button */}
-            <button
-              onClick={onClose}
-              type="button"
-              className="flex items-center gap-1.5 bg-[#f3f3f1] hover:bg-[#03191d] hover:text-white text-[#03191d] px-3.5 py-1.5 rounded-full text-[11px] font-['Raleway:Bold',sans-serif] tracking-wider uppercase transition-colors cursor-pointer"
-              aria-label="Fechar modal"
-            >
-              <span>Fechar</span>
-              <span className="text-[10px] opacity-60 hidden sm:inline">
-                [ESC]
-              </span>
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                <path
-                  d="M2.5 2.5L9.5 9.5M9.5 2.5L2.5 9.5"
-                  stroke="currentColor"
-                  strokeWidth="1.75"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
-
-        {/* Modal Scrollable Body */}
-        <div className="overflow-y-auto modal-scroll px-6 sm:px-10 py-8 flex-1 flex flex-col gap-8">
-          {/* Title & Metadata */}
-          <div className="flex flex-col gap-3">
-            <div className="flex items-center gap-3 flex-wrap">
-              <span className="font-['Raleway:Bold',sans-serif] text-[11px] uppercase tracking-[1.5px] text-[#03191d]/60">
-                Cliente:{" "}
-                <strong className="text-[#03191d]">{project.client}</strong>
-              </span>
-              <span className="text-gray-300">•</span>
-              <span className="font-['Raleway:Medium',sans-serif] text-[11px] uppercase tracking-[1.5px] text-[#03191d]/60">
-                {project.role}
-              </span>
-              <span className="text-gray-300">•</span>
-              <span className="font-['Raleway:Medium',sans-serif] text-[11px] uppercase tracking-[1.5px] text-[#03191d]/60">
-                {project.year}
-              </span>
-            </div>
-
-            <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4">
-              <h2
-                className="font-['Raleway:Black',sans-serif] font-black text-[clamp(28px,4vw,44px)] leading-[1.05] tracking-[-0.03em] uppercase"
-                style={{ color: project.titleColor }}
-              >
-                {project.title}
-              </h2>
-              <span className="self-start sm:self-auto bg-[#155dfc] text-white font-['Raleway:Bold',sans-serif] text-[11px] tracking-wider uppercase px-4 py-1.5 rounded-full shadow-sm">
-                {project.impactBadge}
-              </span>
-            </div>
-
-            <p className="font-['Raleway:Regular',sans-serif] text-[16px] sm:text-[18px] leading-[1.6] text-[#03191d]/80 pt-2 border-t border-[rgba(3,25,29,0.08)]">
-              {project.overview}
-            </p>
-          </div>
-
-          {/* Main Visual Showcase */}
-          <div
-            className="w-full rounded-[20px] overflow-hidden relative shadow-inner flex items-center justify-center"
-            style={{ backgroundColor: project.imgBg, minHeight: 280 }}
-          >
-            <img
-              src={project.imgSrc}
-              alt={project.title}
-              className="w-full max-h-[460px] object-cover"
-            />
-          </div>
-
-          {/* Metrics Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 bg-[#f8f8f6] p-6 rounded-[20px] border border-[rgba(3,25,29,0.06)]">
-            {project.results.map((res, i) => (
-              <div key={i} className="flex flex-col">
-                <p className="font-['Raleway:Black',sans-serif] font-black text-[28px] sm:text-[34px] leading-tight text-[#155dfc]">
-                  {res.metric}
-                </p>
-                <p className="font-['Inter:Regular',sans-serif] text-[10px] uppercase tracking-[1px] text-[#03191d]/70 leading-normal mt-1">
-                  {res.label}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          {/* Challenge & Discovery */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* O Desafio */}
-            <div className="bg-white border border-[rgba(3,25,29,0.1)] rounded-[20px] p-6 flex flex-col gap-3">
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#155dfc]" />
-                <h4 className="font-['Raleway:Bold',sans-serif] font-bold text-[12px] tracking-[1.5px] uppercase text-[#03191d]">
-                  O Desafio
-                </h4>
-              </div>
-              <p className="font-['Raleway:Regular',sans-serif] text-[14px] leading-[1.7] text-[#03191d]/80">
-                {project.challenge}
-              </p>
-            </div>
-
-            {/* Pesquisa & Descoberta */}
-            <div className="bg-white border border-[rgba(3,25,29,0.1)] rounded-[20px] p-6 flex flex-col gap-3">
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#00e7ff]" />
-                <h4 className="font-['Raleway:Bold',sans-serif] font-bold text-[12px] tracking-[1.5px] uppercase text-[#03191d]">
-                  Pesquisa & Descoberta
-                </h4>
-              </div>
-              <ul className="flex flex-col gap-2 font-['Raleway:Regular',sans-serif] text-[13px] leading-[1.6] text-[#03191d]/80">
-                {project.discovery.map((item, idx) => (
-                  <li key={idx} className="flex items-start gap-2">
-                    <span className="text-[#155dfc] font-bold shrink-0 mt-0.5">
-                      ✦
-                    </span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          {/* Estratégia e Solução UX */}
-          <div className="bg-[#03191d] text-white rounded-[20px] p-6 sm:p-8 flex flex-col gap-4">
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#00e7ff]" />
-              <h4 className="font-['Raleway:Bold',sans-serif] font-bold text-[12px] tracking-[2px] uppercase text-[#00e7ff]">
-                Estratégia & Solução UX
-              </h4>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {project.solution.map((step, idx) => (
-                <div
-                  key={idx}
-                  className="bg-white/5 border border-white/10 rounded-xl p-4 flex items-start gap-3"
-                >
-                  <span className="font-['Raleway:Black',sans-serif] text-[#155dfc] text-[16px]">
-                    0{idx + 1}
-                  </span>
-                  <p className="font-['Raleway:Regular',sans-serif] text-[13px] leading-[1.6] text-white/90">
-                    {step}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Tags */}
-          <div className="flex flex-wrap items-center gap-2 pt-2">
-            <span className="font-['Raleway:Bold',sans-serif] text-[10px] tracking-[1.5px] uppercase text-[#6a7282] mr-2">
-              Tags & Métodos:
-            </span>
-            {project.tags.map((tag, idx) => (
-              <span
-                key={idx}
-                className="bg-[#f3f3f1] text-[#03191d] text-[11px] font-['Raleway:SemiBold',sans-serif] px-3 py-1 rounded-full"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-
-          {/* Action CTA & Navigation Footer inside Modal */}
-          <div className="border-t border-[rgba(3,25,29,0.08)] pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <button
-              type="button"
-              onClick={() => {
-                onClose()
-                onOpenContact()
-              }}
-              className="w-full sm:w-auto bg-[#155dfc] text-white font-['Raleway:Bold',sans-serif] text-[12px] tracking-[1.2px] uppercase px-6 py-3.5 rounded-full hover:bg-[#03191d] transition-colors duration-300 flex items-center justify-center gap-2 cursor-pointer shadow-md"
-            >
-              Falar sobre um projeto semelhante
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                <path
-                  d="M2.5 8.5L7.5 3.5M2.5 3.5H7.5V8.5"
-                  stroke="white"
-                  strokeWidth="1.25"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </button>
-
-            <div className="flex items-center gap-3 w-full sm:w-auto justify-end">
-              <button
-                type="button"
-                onClick={onPrev}
-                className="flex-1 sm:flex-initial border border-[#03191d] text-[#03191d] hover:bg-[#03191d] hover:text-white font-['Raleway:Bold',sans-serif] text-[11px] tracking-wider uppercase px-4 py-2.5 rounded-full transition-colors cursor-pointer flex items-center justify-center gap-2"
-              >
-                ← Anterior
-              </button>
-              <button
-                type="button"
-                onClick={onNext}
-                className="flex-1 sm:flex-initial bg-[#03191d] text-white hover:bg-[#155dfc] font-['Raleway:Bold',sans-serif] text-[11px] tracking-wider uppercase px-4 py-2.5 rounded-full transition-colors cursor-pointer flex items-center justify-center gap-2"
-              >
-                Próximo →
-              </button>
-            </div>
-          </div>
-        </div>
-      </motion.div>
-    </motion.div>
-  )
-}
 
 /* ── Curriculum Modal Component ── */
 function CurriculumModal({
@@ -2820,56 +2497,7 @@ function ContactModal({
   )
 }
 
-/* ── Floating Navigation / Back to Top ── */
-function FloatingNav({ onOpenContact }: { onOpenContact: () => void }) {
-  const [visible, setVisible] = useState(false)
 
-  useEffect(() => {
-    const onScroll = () => {
-      setVisible(window.scrollY > 420)
-    }
-    window.addEventListener("scroll", onScroll, { passive: true })
-    return () => window.removeEventListener("scroll", onScroll)
-  }, [])
-
-  if (!visible) return null
-
-  return (
-    <div className="fixed bottom-6 right-6 z-40 flex items-center gap-2 bg-[#03191d]/90 backdrop-blur-md text-white p-1.5 rounded-full shadow-2xl border border-white/10 transition-all duration-300">
-      <motion.button
-        whileHover={{ scale: 1.03 }}
-        whileTap={{ scale: 0.97 }}
-        type="button"
-        onClick={onOpenContact}
-        className="bg-[#155dfc] hover:bg-[#155dfc]/90 text-white font-['Raleway:Bold',sans-serif] text-[10px] tracking-wider uppercase px-4 py-2.5 rounded-full transition-all flex items-center gap-1.5 cursor-pointer shadow-sm"
-        title="Falar com Raoni"
-      >
-        <span className="w-1.5 h-1.5 rounded-full bg-[#00e7ff] animate-pulse" />
-        Falar Comigo
-      </motion.button>
-
-      <motion.button
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        type="button"
-        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        className="p-2.5 rounded-full hover:bg-white/10 text-white transition-colors cursor-pointer"
-        title="Voltar ao topo"
-        aria-label="Voltar ao topo"
-      >
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-          <path
-            d="M7 11.5V2.5M2.5 7L7 2.5L11.5 7"
-            stroke="currentColor"
-            strokeWidth="1.8"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </motion.button>
-    </div>
-  )
-}
 
 /* ── Toast Notification ── */
 function ToastNotification({ message }: { message: string | null }) {
@@ -2893,7 +2521,6 @@ function ToastNotification({ message }: { message: string | null }) {
 
 /* ── Root App ── */
 export default function App() {
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null)
   const [curriculumOpen, setCurriculumOpen] = useState(false)
   const [contactOpen, setContactOpen] = useState(false)
   const [toastMessage, setToastMessage] = useState<string | null>(null)
@@ -2912,7 +2539,7 @@ export default function App() {
 
   // Lock body scroll when modal is open
   useEffect(() => {
-    if (selectedProject || curriculumOpen || contactOpen) {
+    if (curriculumOpen || contactOpen) {
       document.body.style.overflow = "hidden"
     } else {
       document.body.style.overflow = ""
@@ -2920,31 +2547,14 @@ export default function App() {
     return () => {
       document.body.style.overflow = ""
     }
-  }, [selectedProject, curriculumOpen, contactOpen])
-
-  // Project navigation indices
-  const currentProjectIndex = selectedProject
-    ? allProjectsData.findIndex((p) => p.id === selectedProject.id)
-    : 0
-
-  const handleNextProject = () => {
-    const nextIdx = (currentProjectIndex + 1) % allProjectsData.length
-    setSelectedProject(allProjectsData[nextIdx])
-  }
-
-  const handlePrevProject = () => {
-    const prevIdx =
-      (currentProjectIndex - 1 + allProjectsData.length) %
-      allProjectsData.length
-    setSelectedProject(allProjectsData[prevIdx])
-  }
+  }, [curriculumOpen, contactOpen])
 
   return (
     <div className="relative min-h-full">
       <Nav onOpenContact={() => setContactOpen(true)} />
       <HeroSection onOpenContact={() => setContactOpen(true)} />
       <MarqueeSection />
-      <ProjectsSection onSelectProject={(p) => setSelectedProject(p)} />
+      <ProjectsSection />
       <ManifestoBlock
         quote="As pessoas não lembram apenas do que usam. "
         bold="Lembram de como se sentiram."
@@ -2966,21 +2576,6 @@ export default function App() {
 
       {/* Interactive Modals with Framer Motion AnimatePresence */}
       <AnimatePresence>
-        {selectedProject && (
-          <CaseStudyModal
-            key="case-study-modal"
-            project={selectedProject}
-            currentIndex={currentProjectIndex}
-            totalProjects={allProjectsData.length}
-            onClose={() => setSelectedProject(null)}
-            onNext={handleNextProject}
-            onPrev={handlePrevProject}
-            onOpenContact={() => setContactOpen(true)}
-          />
-        )}
-      </AnimatePresence>
-
-      <AnimatePresence>
         {curriculumOpen && (
           <CurriculumModal
             key="curriculum-modal"
@@ -3001,8 +2596,6 @@ export default function App() {
           />
         )}
       </AnimatePresence>
-
-      <FloatingNav onOpenContact={() => setContactOpen(true)} />
 
       <ToastNotification message={toastMessage} />
     </div>
