@@ -178,11 +178,12 @@ function Nav({ onOpenContact }: { onOpenContact: () => void }) {
         </div>
 
         {/* CTA */}
-        <motion.button
+        <motion.a
+          href="https://wa.me/5548999135689?text=Vi%20seu%20site%20e%20fiquei%20interessado%20nos%20seus%20servi%C3%A7os."
+          target="_blank"
+          rel="noopener noreferrer"
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.97 }}
-          onClick={onOpenContact}
-          type="button"
           className="hidden md:flex bg-[#1a1a1a] text-white font-['Raleway:Medium',sans-serif] font-medium text-[11.2px] tracking-[1.12px] uppercase items-center gap-2 px-5 py-2.5 rounded-full hover:bg-[#155dfc] transition-colors duration-300 shadow-md cursor-pointer"
         >
           Falar Comigo
@@ -195,7 +196,7 @@ function Nav({ onOpenContact }: { onOpenContact: () => void }) {
               strokeLinejoin="round"
             />
           </svg>
-        </motion.button>
+        </motion.a>
 
         {/* Mobile hamburger */}
         <button
@@ -244,17 +245,16 @@ function Nav({ onOpenContact }: { onOpenContact: () => void }) {
                   {l.label}
                 </a>
               ))}
-              <motion.button
+              <motion.a
+                href="https://wa.me/5548999135689?text=Vi%20seu%20site%20e%20fiquei%20interessado%20nos%20seus%20servi%C3%A7os."
+                target="_blank"
+                rel="noopener noreferrer"
                 whileTap={{ scale: 0.97 }}
-                type="button"
-                onClick={() => {
-                  setOpen(false)
-                  onOpenContact()
-                }}
+                onClick={() => setOpen(false)}
                 className="bg-[#1a1a1a] text-white font-['Raleway:Medium',sans-serif] font-medium text-[11px] tracking-[1.1px] uppercase flex items-center gap-2 px-5 py-3 rounded-full self-start hover:bg-[#155dfc] transition-colors duration-300 cursor-pointer"
               >
                 Falar Comigo
-              </motion.button>
+              </motion.a>
             </motion.div>
           )}
         </AnimatePresence>
