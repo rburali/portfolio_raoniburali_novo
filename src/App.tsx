@@ -1364,9 +1364,10 @@ function AboutSection({ onOpenCurriculum }: { onOpenCurriculum: () => void }) {
             </a>
 
             {/* Curriculum */}
-            <button
-              type="button"
-              onClick={onOpenCurriculum}
+            <a
+              href="https://docs.google.com/document/d/1EfD6GHsbjzCTKyGcM6LYDMmnCUUUSTI_kMTpPurRr9A/edit?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
               className="border border-black flex gap-2 items-center px-6 py-[10px] rounded-full shadow-[0px_10px_15px_0px_rgba(209,213,220,0.5),0px_4px_6px_0px_rgba(209,213,220,0.5)] hover:bg-black hover:text-white transition-colors duration-300 group cursor-pointer"
               title="Abrir Currículo Completo de Raoni Burali"
             >
@@ -1393,7 +1394,7 @@ function AboutSection({ onOpenCurriculum }: { onOpenCurriculum: () => void }) {
                   <path d={aboutSvgPaths.p13ba0c80} fill="currentColor" />
                 </g>
               </svg>
-            </button>
+            </a>
           </div>
         </div>
 
