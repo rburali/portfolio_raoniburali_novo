@@ -187,16 +187,37 @@ function CaseHero() {
 
           {/* Meta grid */}
           <div
-            className="reveal border-t border-[#99a1af] grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-y-6 gap-x-6 py-8 mt-12 sm:mt-16 w-full"
+            className="reveal border-t border-[#99a1af] grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-[repeat(7,auto)] lg:justify-between gap-x-6 gap-y-8 lg:gap-y-0 py-8 mt-12 sm:mt-16 w-full"
             style={{ transitionDelay: "240ms" }}
           >
             {[
               { label: "Cliente", value: "Vitru Educação" },
               { label: "Ano", value: "2026" },
-              { label: "Função", value: "Product Designer Sênior" },
-              { label: "Equipe", value: "1 Designer · 1 Dev · 1 PO" },
+              {
+                label: "Função",
+                value: (
+                  <>
+                    Product Designer<br />Sênior
+                  </>
+                ),
+              },
+              {
+                label: "Equipe",
+                value: (
+                  <>
+                    1 Designer · 1 Dev · 1<br />PO
+                  </>
+                ),
+              },
               { label: "Duração", value: "30 Dias" },
-              { label: "Escopo", value: "Discovery, Estratégia, UI, Dev" },
+              {
+                label: "Escopo",
+                value: (
+                  <>
+                    Discovery, Estratégia,<br />UI, Dev
+                  </>
+                ),
+              },
               { label: "Plataforma", value: "Web · Mobile" },
             ].map(({ label, value }) => (
               <div key={label} className="flex flex-col">
