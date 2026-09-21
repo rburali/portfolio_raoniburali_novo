@@ -40,6 +40,14 @@ import imgLinkedIn from "@/imports/PortfolioNovo/10ffd09aa7d7061d32412fb48e085e9
 import imgBehance from "@/imports/PortfolioNovo/c3b50e3f707f37701480477e1b226ebba52ec609.png"
 import imgInstagram from "@/imports/PortfolioNovo/8dfa0e53310c352cd923def753fc8950d745b662.png"
 
+/* ── Case Pages ── */
+import UnicesumarMedicinaCase from "@/Projetos/Unicesumar_Medicina/Case"
+import UniasselviRafaelCortezCase from "@/Projetos/Uniasselvi_Rafael_Cortez/Case"
+import HiplatformOmniChatCase from "@/Projetos/Hiplatform_Omni_Chat/Case"
+import ArchtrendsPortobelloCase from "@/Projetos/Archtrends_Portobello/Case"
+import SicrediCase from "@/Projetos/Sicredi/Case"
+import StefaniniBancoDoBrasilCase from "@/Projetos/Stefanini_Banco_do_Brasil/Case"
+
 /* ── Scroll-reveal hook ── */
 function useReveal(threshold = 0.12) {
   const ref = useRef<HTMLDivElement>(null)
@@ -645,6 +653,7 @@ interface ProjectResult {
 /* ── Project card types ── */
 interface Project {
   id: string
+  route: string
   category: string
   categoryGroup: "landing-page" | "produto" | "processos"
   categoryColor?: string
@@ -671,6 +680,7 @@ interface Project {
 const allProjectsData: Project[] = [
   {
     id: "medicina",
+    route: "/projetos/unicesumar-medicina",
     category: "Landing Page",
     categoryGroup: "landing-page",
     categoryColor: "rgb(179, 180, 182)",
@@ -727,6 +737,7 @@ const allProjectsData: Project[] = [
   },
   {
     id: "rafael-cortez",
+    route: "/projetos/uniasselvi-rafael-cortez",
     category: "Landing Page",
     categoryGroup: "landing-page",
     categoryColor: "rgb(153, 154, 155)",
@@ -787,6 +798,7 @@ const allProjectsData: Project[] = [
   },
   {
     id: "omni-chat",
+    route: "/projetos/hiplatform-omni-chat",
     category: "Desenvolvimento de Produto",
     categoryGroup: "produto",
     categoryColor: "rgb(153, 154, 155)",
@@ -850,6 +862,7 @@ const allProjectsData: Project[] = [
   },
   {
     id: "arch-trends",
+    route: "/projetos/archtrends-portobello",
     category: "Desenvolvimento de Produto",
     categoryGroup: "produto",
     categoryColor: "rgb(153, 154, 155)",
@@ -913,6 +926,7 @@ const allProjectsData: Project[] = [
   },
   {
     id: "sicredi",
+    route: "/projetos/sicredi",
     category: "Processos de Desenvolvimento de Produto",
     categoryGroup: "processos",
     categoryColor: "rgb(153, 154, 155)",
@@ -976,6 +990,7 @@ const allProjectsData: Project[] = [
   },
   {
     id: "banco-do-brasil",
+    route: "/projetos/stefanini-banco-do-brasil",
     category: "Experiência do Usuário",
     categoryGroup: "processos",
     categoryColor: "rgb(153, 154, 155)",
@@ -1043,8 +1058,10 @@ const allProjectsData: Project[] = [
 
 function ProjectCard({
   project,
+  onNavigate,
 }: {
   project: Project
+  onNavigate?: (to: string) => void
 }) {
   const { ref, visible } = useReveal()
   return (
@@ -1055,10 +1072,17 @@ function ProjectCard({
       } group grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center`}
     >
       {/* Image side */}
-      <div
+      <a
+        href={project.route}
+        onClick={(e) => {
+          if (onNavigate && !e.ctrlKey && !e.metaKey && !e.shiftKey) {
+            e.preventDefault()
+            onNavigate(project.route)
+          }
+        }}
         className={`${
           project.reversed ? "md:order-last" : ""
-        } relative w-full aspect-[4/3] rounded-[20px] overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300`}
+        } block relative w-full aspect-[4/3] rounded-[20px] overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 cursor-pointer`}
         style={{ backgroundColor: project.imgBg }}
       >
         {project.logoElement && (
@@ -1076,7 +1100,7 @@ function ProjectCard({
             Explorar Estudo de Caso
           </span>
         </div>
-      </div>
+      </a>
 
       {/* Text side */}
       <div
@@ -1104,11 +1128,17 @@ function ProjectCard({
         <div className="font-['Raleway:Regular',sans-serif] font-normal text-[16px] leading-[1.625] text-[rgba(3,25,29,0.7)] mb-8">
           {project.description}
         </div>
-        <motion.button
+        <motion.a
+          href={project.route}
+          onClick={(e) => {
+            if (onNavigate && !e.ctrlKey && !e.metaKey && !e.shiftKey) {
+              e.preventDefault()
+              onNavigate(project.route)
+            }
+          }}
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
-          type="button"
-          className="self-start border-[1.8px] border-[#03191d] flex items-center gap-3 px-8 py-4 rounded-full font-['Raleway:Bold',sans-serif] font-bold text-[12px] tracking-[1.2px] uppercase text-[#03191d] hover:bg-[#03191d] hover:text-white transition-all duration-300 group shadow-sm hover:shadow-md"
+          className="self-start border-[1.8px] border-[#03191d] flex items-center gap-3 px-8 py-4 rounded-full font-['Raleway:Bold',sans-serif] font-bold text-[12px] tracking-[1.2px] uppercase text-[#03191d] hover:bg-[#03191d] hover:text-white transition-all duration-300 group shadow-sm hover:shadow-md cursor-pointer"
         >
           Ver projeto
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -1120,14 +1150,18 @@ function ProjectCard({
               strokeLinejoin="round"
             />
           </svg>
-        </motion.button>
+        </motion.a>
       </div>
     </div>
   )
 }
 
 /* ── Projects Section ── */
-function ProjectsSection() {
+function ProjectsSection({
+  onNavigate,
+}: {
+  onNavigate?: (to: string) => void
+}) {
   const { ref, visible } = useReveal(0.1)
   const [filter, setFilter] =
     useState<"all" | "landing-page" | "produto" | "processos">("all")
@@ -1223,7 +1257,7 @@ function ProjectsSection() {
                 exit={{ opacity: 0, scale: 0.98 }}
                 transition={{ duration: 0.3 }}
               >
-                <ProjectCard project={p} />
+                <ProjectCard project={p} onNavigate={onNavigate} />
               </motion.div>
             ))}
           </AnimatePresence>
@@ -2519,8 +2553,12 @@ function ToastNotification({ message }: { message: string | null }) {
   )
 }
 
-/* ── Root App ── */
-export default function App() {
+/* ── Home Page ── */
+export function HomePage({
+  onNavigate,
+}: {
+  onNavigate: (to: string) => void
+}) {
   const [curriculumOpen, setCurriculumOpen] = useState(false)
   const [contactOpen, setContactOpen] = useState(false)
   const [toastMessage, setToastMessage] = useState<string | null>(null)
@@ -2554,7 +2592,7 @@ export default function App() {
       <Nav onOpenContact={() => setContactOpen(true)} />
       <HeroSection onOpenContact={() => setContactOpen(true)} />
       <MarqueeSection />
-      <ProjectsSection />
+      <ProjectsSection onNavigate={onNavigate} />
       <ManifestoBlock
         quote="As pessoas não lembram apenas do que usam. "
         bold="Lembram de como se sentiram."
@@ -2600,4 +2638,72 @@ export default function App() {
       <ToastNotification message={toastMessage} />
     </div>
   )
+}
+
+/* ── Root App with SPA Router ── */
+export default function App() {
+  const [currentPath, setCurrentPath] = useState(() => {
+    if (typeof window !== "undefined") {
+      return window.location.pathname
+    }
+    return "/"
+  })
+
+  useEffect(() => {
+    const handlePopState = () => {
+      setCurrentPath(window.location.pathname)
+    }
+    window.addEventListener("popstate", handlePopState)
+    return () => window.removeEventListener("popstate", handlePopState)
+  }, [])
+
+  const navigate = (to: string) => {
+    if (to.includes("#")) {
+      const [path, hash] = to.split("#")
+      const targetPath = path || "/"
+      if (window.location.pathname !== targetPath) {
+        window.history.pushState({}, "", to)
+        setCurrentPath(targetPath)
+      } else {
+        window.history.pushState({}, "", to)
+      }
+      setTimeout(() => {
+        const el = document.getElementById(hash)
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" })
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" })
+        }
+      }, 50)
+      return
+    }
+
+    if (window.location.pathname !== to) {
+      window.history.pushState({}, "", to)
+      setCurrentPath(to)
+      window.scrollTo({ top: 0, behavior: "smooth" })
+    }
+  }
+
+  const normalizedPath =
+    currentPath.length > 1 && currentPath.endsWith("/")
+      ? currentPath.slice(0, -1)
+      : currentPath
+
+  switch (normalizedPath) {
+    case "/projetos/unicesumar-medicina":
+      return <UnicesumarMedicinaCase onNavigate={navigate} />
+    case "/projetos/uniasselvi-rafael-cortez":
+      return <UniasselviRafaelCortezCase onNavigate={navigate} />
+    case "/projetos/hiplatform-omni-chat":
+      return <HiplatformOmniChatCase onNavigate={navigate} />
+    case "/projetos/archtrends-portobello":
+      return <ArchtrendsPortobelloCase onNavigate={navigate} />
+    case "/projetos/sicredi":
+      return <SicrediCase onNavigate={navigate} />
+    case "/projetos/stefanini-banco-do-brasil":
+      return <StefaniniBancoDoBrasilCase onNavigate={navigate} />
+    default:
+      return <HomePage onNavigate={navigate} />
+  }
 }
