@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useCallback, MouseEvent } from "react"
-import { motion } from "framer-motion"
 import svgPaths from "@/imports/CasoDeEstudoVestibularUnicesumar/svg-gqrgp2oyjk"
 import imgHeroMedicina from "@/imports/CasoDeEstudoVestibularUnicesumar/hero-composicao-medicina.png"
 import imgLaptop from "@/imports/CasoDeEstudoVestibularUnicesumar/8bda84c504914d17b03801295eeb40774833ba9f.png"
@@ -9,7 +8,6 @@ import imgWireframe from "@/imports/CasoDeEstudoVestibularUnicesumar/72c3c6e4894
 import imgLpMedicina from "@/imports/CasoDeEstudoVestibularUnicesumar/3b0c8281b0227e042ea51d34d14d5e52d1e99b55.png"
 import imgProxCase from "@/imports/CasoDeEstudoVestibularUnicesumar/d9bb843826c7fe559fd5994aa1b57dfc59cff2b1.png"
 import imgProxCase1 from "@/imports/CasoDeEstudoVestibularUnicesumar/dde623d84acab1d612f65cd576e99f14f8b5311d.png"
-import LogoRaoniHeader from "@/imports/LogoRaoniHeader"
 import imgLogoRodape from "@/imports/LOGO_RODAPE.png"
 
 // ─── Interactive Hooks ────────────────────────────────────────────────────────
@@ -860,63 +858,27 @@ export default function UnicesumarMedicinaCase({ onNavigate }: CaseProps) {
   return (
     <div className="bg-[#f3f3f1] w-full min-h-screen flex flex-col overflow-x-hidden text-[#03191d]">
       {/* Sticky Header */}
-      <header className="sticky top-0 z-50 bg-[rgba(243,243,241,0.96)] backdrop-blur-md border-b border-[rgba(3,25,29,0.06)] px-6 sm:px-12 py-4">
-        <div className="max-w-[1320px] mx-auto flex items-center justify-between">
+      <header className="sticky top-0 z-50 bg-[rgba(243,243,241,0.96)] backdrop-blur-md border-b border-[rgba(3,25,29,0.06)] px-6 sm:px-12 lg:px-16 py-4">
+        <div className="max-w-[1320px] mx-auto flex items-center">
           <a
             href="/"
             onClick={(e) => {
               e.preventDefault()
               onNavigate("/")
             }}
-            className="flex items-center gap-2 select-none"
-            aria-label="Home"
+            className="flex items-center gap-2 font-['Raleway:Bold',sans-serif] font-bold text-[11px] tracking-[1.5px] uppercase text-[#03191d] hover:text-[#155dfc] transition-colors"
           >
-            <div className="w-[63px] h-[42px] flex items-center justify-center">
-              <LogoRaoniHeader />
-            </div>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path
+                d="M11 7H3M3 7L7 11M3 7L7 3"
+                stroke="currentColor"
+                strokeWidth="1.6"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            <span>Voltar para a Home</span>
           </a>
-
-          <div className="flex items-center gap-4 sm:gap-6">
-            <a
-              href="/"
-              onClick={(e) => {
-                e.preventDefault()
-                onNavigate("/")
-              }}
-              className="flex items-center gap-2 font-['Raleway:Bold',sans-serif] font-bold text-[11px] tracking-[1.5px] uppercase text-[#03191d] hover:text-[#155dfc] transition-colors"
-            >
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                <path
-                  d="M11 7H3M3 7L7 11M3 7L7 3"
-                  stroke="currentColor"
-                  strokeWidth="1.6"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              <span>Voltar para a Home</span>
-            </a>
-
-            <motion.a
-              href="https://wa.me/5548999135689?text=Vi%20seu%20site%20e%20fiquei%20interessado%20nos%20seus%20servi%C3%A7os."
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              className="hidden sm:flex bg-[#1a1a1a] text-white font-['Raleway:Medium',sans-serif] font-medium text-[11.2px] tracking-[1.12px] uppercase items-center gap-2 px-5 py-2.5 rounded-full hover:bg-[#155dfc] transition-colors duration-300 shadow-md cursor-pointer"
-            >
-              Falar Comigo
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                <path
-                  d="M2.5 8.5L7.5 3.5M2.5 3.5H7.5V8.5"
-                  stroke="white"
-                  strokeWidth="1.25"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </motion.a>
-          </div>
         </div>
       </header>
 
