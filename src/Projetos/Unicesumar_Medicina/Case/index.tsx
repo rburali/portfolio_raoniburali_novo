@@ -1,10 +1,7 @@
 import React, { useEffect, useRef, useCallback, MouseEvent } from "react"
 import { motion } from "framer-motion"
 import svgPaths from "@/imports/CasoDeEstudoVestibularUnicesumar/svg-gqrgp2oyjk"
-import imgBg from "@/imports/CasoDeEstudoVestibularUnicesumar/35996afe3f2a0fc45ccae92f914c0a79f7d2ed89.png"
-import imgBgFundoFolder1 from "@/imports/CasoDeEstudoVestibularUnicesumar/a02bb3b7865e9c648284bae5e32c999f171bf1e3.png"
-import imgEstudante from "@/imports/CasoDeEstudoVestibularUnicesumar/230ce24af35d2e32567dbf5b206807c004a4ef54.png"
-import imgMedicina2 from "@/imports/CasoDeEstudoVestibularUnicesumar/e5c193b660c605b497ce788cbd29db41218ff988.png"
+import imgHeroMedicina from "@/imports/CasoDeEstudoVestibularUnicesumar/hero-composicao-medicina.png"
 import imgLaptop from "@/imports/CasoDeEstudoVestibularUnicesumar/8bda84c504914d17b03801295eeb40774833ba9f.png"
 import imgPhone from "@/imports/CasoDeEstudoVestibularUnicesumar/4cc2372bde310ebd1c402970c972632493ad68ec.png"
 import imgInfoArch from "@/imports/CasoDeEstudoVestibularUnicesumar/9a19153988fb006a0c5e0625397d81bd24fa9c3f.png"
@@ -214,24 +211,12 @@ function CaseHero() {
           </div>
 
           {/* Hero image banner */}
-          <div className="reveal-scale mt-8 sm:mt-14 w-full" style={{ transitionDelay: "80ms" }}>
-            <div className="bg-[#0082b4] rounded-[16px] sm:rounded-[20px] h-[360px] sm:h-[480px] lg:h-[526px] relative overflow-hidden w-full shadow-lg">
-              <div className="absolute inset-0 bg-[#72b0c9]" />
-              <div className="absolute inset-0 overflow-hidden">
-                <img alt="" className="absolute w-full" style={{ height: "390.84%", top: "-145.58%", left: 0 }} src={imgBg} />
-              </div>
-              <img alt="" className="absolute inset-0 size-full object-cover opacity-40" src={imgBgFundoFolder1} />
-
-              {/* Student image */}
-              <div className="absolute right-0 bottom-0 w-[280px] sm:w-[440px] lg:w-[570px] h-full overflow-hidden">
-                <img alt="Estudante de medicina" className="absolute w-full" style={{ height: "109.75%", top: "-4.87%", left: 0 }} src={imgEstudante} />
-              </div>
-
-              {/* Medicina logo */}
-              <div className="absolute left-6 sm:left-[60px] lg:left-[111px] top-[40px] sm:top-[100px] lg:top-[156px] w-[220px] sm:w-[340px] lg:w-[453px]">
-                <img alt="Medicina" className="w-full object-cover drop-shadow-md" src={imgMedicina2} />
-              </div>
-            </div>
+          <div className="reveal-scale mt-8 sm:mt-14 w-full rounded-[16px] sm:rounded-[20px] overflow-hidden shadow-lg" style={{ transitionDelay: "80ms" }}>
+            <img
+              src={imgHeroMedicina}
+              alt="Composição visual da campanha do Vestibular de Medicina UniCesumar com estudante de medicina e logotipo oficial"
+              className="w-full h-auto block object-contain rounded-[16px] sm:rounded-[20px]"
+            />
           </div>
         </div>
       </div>
