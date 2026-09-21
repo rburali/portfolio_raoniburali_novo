@@ -134,6 +134,23 @@ function LogoHorizontal() {
   )
 }
 
+// ─── Button: Ver Site no Ar ───────────────────────────────────────────────────
+
+function VerSiteNoArButton({ className = "" }: { className?: string }) {
+  return (
+    <a
+      href="https://vempra.unicesumar.edu.br/medicina"
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`inline-flex items-center gap-2.5 h-[38px] px-5 rounded-full bg-[#56b9ff] hover:bg-[#3ea5f5] hover:shadow-md hover:scale-[1.02] active:scale-[0.98] text-[#03191d] font-['Raleway:Bold',sans-serif] font-bold text-[11px] tracking-[1.5px] uppercase transition-all duration-200 shrink-0 select-none cursor-pointer ${className}`}
+      aria-label="Ver site no ar - Vestibular de Medicina UniCesumar (abre em nova aba)"
+    >
+      <span className="size-[7px] rounded-full bg-white shrink-0" aria-hidden="true" />
+      <span>VER SITE NO AR</span>
+    </a>
+  )
+}
+
 // ─── Hero Section ─────────────────────────────────────────────────────────────
 
 function CaseHero() {
@@ -149,14 +166,19 @@ function CaseHero() {
             <div className="bg-[#155dfc] h-px w-[60px]" />
           </div>
 
-          {/* Title */}
-          <div className="reveal pt-4 sm:pt-8" style={{ transitionDelay: "80ms" }}>
+          {/* Title and Action Button */}
+          <div className="reveal pt-4 sm:pt-8 w-full" style={{ transitionDelay: "80ms" }}>
             <LogoHorizontal />
-            <h1 className="font-['Raleway:ExtraBold',sans-serif] font-extrabold text-[clamp(28px,4.5vw,46px)] tracking-[-1.5px] text-[#0a0a0a] leading-[1.15] mt-6">
-              Redesenhando a estratégia de <br className="hidden sm:inline" />
-              desenvolvimento da{" "}
-              <span className="text-black">LP do Vestibular de Medicina</span>
-            </h1>
+            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 lg:gap-8 mt-6">
+              <h1 className="font-['Raleway:ExtraBold',sans-serif] font-extrabold text-[clamp(28px,4.5vw,46px)] tracking-[-1.5px] text-[#0a0a0a] leading-[1.15] max-w-[840px]">
+                Redesenhando a estratégia de <br className="hidden sm:inline" />
+                desenvolvimento da{" "}
+                <span className="text-black">LP do Vestibular de Medicina</span>
+              </h1>
+              <div className="shrink-0 pb-1 sm:pb-2">
+                <VerSiteNoArButton />
+              </div>
+            </div>
           </div>
 
           {/* Subtitle */}
