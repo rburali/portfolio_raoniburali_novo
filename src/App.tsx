@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import LogoSVG from "@/imports/Logo/index"
+import LogoRaoniHeader from "@/imports/LogoRaoniHeader"
 
 /* ── Images ── */
 import imgPersona from "@/imports/PERSONA_Raoni.png"
@@ -62,7 +63,7 @@ function useReveal(threshold = 0.12) {
 function LogoMark({ light = false }: { light?: boolean }) {
   return (
     <div
-      className="relative shrink-0"
+      className="relative shrink-0 flex items-center justify-center select-none"
       style={{
         width: 63,
         height: 42,
@@ -70,7 +71,7 @@ function LogoMark({ light = false }: { light?: boolean }) {
       }}
       aria-label="Raoni Burali"
     >
-      <LogoSVG />
+      <LogoRaoniHeader />
     </div>
   )
 }
