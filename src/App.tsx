@@ -1510,8 +1510,72 @@ interface ExpEntry {
   logo: string
 }
 
+function ExperienceRow({ e, i }: { e: ExpEntry; i: number }) {
+  const itemRef = useRef<HTMLDivElement>(null)
+  const [revealed, setRevealed] = useState(false)
+
+  useEffect(() => {
+    const el = itemRef.current
+    if (!el || revealed) return
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setRevealed(true)
+          obs.disconnect()
+        }
+      },
+      { threshold: 0.1 },
+    )
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [revealed])
+
+  return (
+    <div
+      ref={itemRef}
+      className={`reveal ${
+        revealed ? "in-view" : ""
+      } delay-${Math.min((i + 1) * 100, 500)} flex flex-col sm:flex-row sm:items-center justify-between gap-4 py-6 group hover:bg-[#f9f9f9] px-4 -mx-4 rounded-xl transition-colors duration-200`}
+    >
+      <p className="font-['Raleway:SemiBold',sans-serif] font-semibold text-[10.4px] tracking-[2.6px] uppercase text-[#155dfc] shrink-0 w-[170px]">
+        {e.period}
+      </p>
+      <p className="font-['Raleway:Bold',sans-serif] font-bold text-[20px] leading-[1.4] tracking-[-0.025em] uppercase text-[#03191d] flex-1">
+        {e.role}
+      </p>
+      <div className="flex items-center gap-4">
+        <p className="font-['Raleway:Regular',sans-serif] font-normal text-[14px] text-[rgba(3,25,29,0.4)] text-right">
+          {e.company}
+        </p>
+        <img
+          src={e.logo}
+          alt={e.company}
+          className="w-12 h-12 rounded-[8px] object-cover shrink-0"
+        />
+      </div>
+    </div>
+  )
+}
+
 function ExperienceSection() {
-  const { ref, visible } = useReveal(0.1)
+  const headerRef = useRef<HTMLDivElement>(null)
+  const [headerRevealed, setHeaderRevealed] = useState(false)
+
+  useEffect(() => {
+    const el = headerRef.current
+    if (!el || headerRevealed) return
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setHeaderRevealed(true)
+          obs.disconnect()
+        }
+      },
+      { threshold: 0.1 },
+    )
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [headerRevealed])
 
   const entries: ExpEntry[] = [
     {
@@ -1533,16 +1597,16 @@ function ExperienceSection() {
       logo: imgHiplatformLogo,
     },
     {
-      period: "2019 — 2020",
-      role: "UX/UI Product Designer Pleno",
-      company: "PORTFOBELLO",
-      logo: imgPortfobelloLogo,
-    },
-    {
       period: "2020 — 2021",
       role: "UX/UI Product Designer Sênior",
       company: "STEFANINI BY BANCO DO BRASIL",
       logo: imgStefaniniLogo,
+    },
+    {
+      period: "2019 — 2020",
+      role: "UX/UI Product Designer Pleno",
+      company: "PORTFOBELLO",
+      logo: imgPortfobelloLogo,
     },
   ]
 
@@ -1552,7 +1616,7 @@ function ExperienceSection() {
       id="experiencia"
     >
       <div className="max-w-[1200px] mx-auto">
-        <div ref={ref} className={`reveal ${visible ? "in-view" : ""}`}>
+        <div ref={headerRef} className={`reveal ${headerRevealed ? "in-view" : ""}`}>
           <p className="font-['Raleway:SemiBold',sans-serif] font-semibold text-[10.4px] tracking-[2.6px] uppercase text-[#155dfc] mb-2">
             Experiência Profissional
           </p>
@@ -1563,29 +1627,7 @@ function ExperienceSection() {
 
         <div className="flex flex-col divide-y divide-[rgba(3,25,29,0.1)]">
           {entries.map((e, i) => (
-            <div
-              key={i}
-              className={`reveal ${
-                visible ? "in-view" : ""
-              } delay-${Math.min((i + 1) * 100, 500)} flex flex-col sm:flex-row sm:items-center justify-between gap-4 py-6 group hover:bg-[#f9f9f9] px-4 -mx-4 rounded-xl transition-colors duration-200`}
-            >
-              <p className="font-['Raleway:SemiBold',sans-serif] font-semibold text-[10.4px] tracking-[2.6px] uppercase text-[#155dfc] shrink-0 w-[170px]">
-                {e.period}
-              </p>
-              <p className="font-['Raleway:Bold',sans-serif] font-bold text-[20px] leading-[1.4] tracking-[-0.025em] uppercase text-[#03191d] flex-1">
-                {e.role}
-              </p>
-              <div className="flex items-center gap-4">
-                <p className="font-['Raleway:Regular',sans-serif] font-normal text-[14px] text-[rgba(3,25,29,0.4)] text-right">
-                  {e.company}
-                </p>
-                <img
-                  src={e.logo}
-                  alt={e.company}
-                  className="w-12 h-12 rounded-[8px] object-cover shrink-0"
-                />
-              </div>
-            </div>
+            <ExperienceRow key={i} e={e} i={i} />
           ))}
         </div>
       </div>
