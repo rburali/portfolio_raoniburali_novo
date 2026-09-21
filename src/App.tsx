@@ -1946,66 +1946,12 @@ function ContactSection({
           <p className="font-['Raleway:Bold',sans-serif] font-bold text-[24px] leading-[1.5] text-[#fafcff]">
             Vamos conversar sobre o seu próximo projeto?
           </p>
-          <p className="font-['Raleway:Regular',sans-serif] text-[14px] text-white/80 mt-1">
-            Escolha seu canal preferido ou envie uma mensagem direta.
-          </p>
-        </div>
-
-        {/* Direct Action Buttons */}
-        <div className="flex flex-wrap items-center justify-center gap-3 w-full max-w-xl">
-          <a
-            href="https://wa.me/5544999999999?text=Ol%C3%A1%20Raoni!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto."
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex-1 min-w-[200px] bg-white text-[#155dfc] hover:bg-[#03191d] hover:text-white font-['Raleway:Bold',sans-serif] font-bold text-[11px] tracking-[1px] uppercase px-6 py-3.5 rounded-full transition-all duration-300 shadow-md flex items-center justify-center gap-2 cursor-pointer"
-          >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-5.705 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z" />
-            </svg>
-            WhatsApp Direto
-          </a>
-
-          <button
-            type="button"
-            onClick={onCopyEmail}
-            className="flex-1 min-w-[200px] bg-[rgba(255,255,255,0.15)] border border-white/60 text-white hover:bg-white hover:text-[#155dfc] font-['Raleway:Bold',sans-serif] font-bold text-[11px] tracking-[1px] uppercase px-6 py-3.5 rounded-full transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer shadow-sm"
-          >
-            <svg
-              width="15"
-              height="15"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-              <polyline points="22,6 12,13 2,6" />
-            </svg>
-            Copiar E-mail
-          </button>
-
-          <button
-            type="button"
-            onClick={onOpenContact}
-            className="w-full sm:w-auto bg-[#03191d] text-white hover:bg-black font-['Raleway:Bold',sans-serif] font-bold text-[11px] tracking-[1px] uppercase px-8 py-3.5 rounded-full transition-all duration-300 shadow-md flex items-center justify-center gap-2 cursor-pointer"
-          >
-            Formulário de Mensagem
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-              <path
-                d="M2.5 8.5L7.5 3.5M2.5 3.5H7.5V8.5"
-                stroke="white"
-                strokeWidth="1.25"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </button>
         </div>
 
         {/* Social Links */}
-        <div className="flex flex-wrap items-center justify-center gap-3 pt-4">
+        <div className="flex flex-wrap items-center justify-center gap-3">
           <a
-            href="https://linkedin.com/in/raoniburali"
+            href="https://www.linkedin.com/in/raoniburali/"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 bg-[rgba(255,255,255,0.2)] border border-[rgba(255,255,255,0.7)] text-[rgba(255,255,255,0.9)] font-['Raleway:Bold',sans-serif] font-bold text-[10.4px] tracking-[1px] uppercase px-5 py-2.5 rounded-full hover:bg-white hover:text-[#155dfc] transition-all duration-300"
@@ -2018,7 +1964,7 @@ function ContactSection({
             LinkedIn
           </a>
           <a
-            href="https://behance.net/raoniburali"
+            href="https://www.behance.net/burali"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 bg-[rgba(255,255,255,0.2)] border border-[rgba(255,255,255,0.7)] text-[rgba(255,255,255,0.9)] font-['Raleway:Bold',sans-serif] font-bold text-[10.4px] tracking-[1px] uppercase px-5 py-2.5 rounded-full hover:bg-white hover:text-[#155dfc] transition-all duration-300"
@@ -2031,7 +1977,7 @@ function ContactSection({
             Behance
           </a>
           <a
-            href="https://instagram.com/raoniburali"
+            href="http://instagram.com/rburali.ux"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 bg-[rgba(255,255,255,0.2)] border border-[rgba(255,255,255,0.7)] text-[rgba(255,255,255,0.9)] font-['Raleway:Bold',sans-serif] font-bold text-[10.4px] tracking-[1px] uppercase px-5 py-2.5 rounded-full hover:bg-white hover:text-[#155dfc] transition-all duration-300"
