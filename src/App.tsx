@@ -1638,42 +1638,132 @@ function ExperienceSection() {
 
 /* ── Método Essência ── */
 interface MetodoStep {
-  num: string
+  term: string
+  sizeClass: string
   tag: string
   heading: string
   body: string
 }
 
+function MetodoCard({
+  s,
+  i,
+  total,
+}: {
+  s: MetodoStep
+  i: number
+  total: number
+}) {
+  const cardRef = useRef<HTMLDivElement>(null)
+  const [revealed, setRevealed] = useState(false)
+
+  useEffect(() => {
+    const el = cardRef.current
+    if (!el || revealed) return
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setRevealed(true)
+          obs.disconnect()
+        }
+      },
+      { threshold: 0.1 },
+    )
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [revealed])
+
+  return (
+    <div
+      ref={cardRef}
+      className={`reveal ${
+        revealed ? "in-view" : ""
+      } delay-${i * 100 + 100} bg-[rgba(21,93,252,0.4)] border border-[rgba(139,174,250,0.18)] ${
+        i === 0
+          ? "rounded-tl-[16px] rounded-bl-[16px] lg:rounded-tr-none lg:rounded-br-none"
+          : i === total - 1
+            ? "rounded-tr-[16px] rounded-br-[16px] lg:rounded-tl-none lg:rounded-bl-none"
+            : "lg:border-l-2 lg:border-l-[#155dfc] lg:border-t-0 lg:border-r-0 lg:border-b-0"
+      } ${
+        i > 0 ? "lg:border-l-2 lg:border-l-[#155dfc]" : ""
+      } p-6 flex flex-col gap-3`}
+    >
+      <div className="h-[32px] flex items-center">
+        <p
+          className={`font-['Raleway:Black',sans-serif] font-black ${s.sizeClass} leading-none tracking-[-0.03em] text-[#155dfc] whitespace-nowrap`}
+        >
+          {s.term}
+        </p>
+      </div>
+      <div className="flex items-center gap-2">
+        <div className="w-1.5 h-1.5 rounded-full bg-[#8baefa]" />
+        <div className="h-px flex-1 bg-[rgba(139,174,250,0.22)]" />
+      </div>
+      <p className="font-['Raleway:SemiBold',sans-serif] font-semibold text-[9px] tracking-[2.4px] uppercase text-[#8baefa]">
+        {s.tag}
+      </p>
+      <p className="font-['Raleway:Bold',sans-serif] font-bold text-[14px] tracking-[0.56px] uppercase text-white">
+        {s.heading}
+      </p>
+      <p className="font-['Raleway:Light',sans-serif] font-light text-[12px] leading-[1.75] text-[rgba(255,255,255,0.48)]">
+        {s.body}
+      </p>
+    </div>
+  )
+}
+
 function MetodoSection() {
-  const { ref, visible } = useReveal(0.1)
+  const headerRef = useRef<HTMLDivElement>(null)
+  const [headerRevealed, setHeaderRevealed] = useState(false)
+
+  useEffect(() => {
+    const el = headerRef.current
+    if (!el || headerRevealed) return
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setHeaderRevealed(true)
+          obs.disconnect()
+        }
+      },
+      { threshold: 0.1 },
+    )
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [headerRevealed])
 
   const steps: MetodoStep[] = [
     {
-      num: "01",
+      term: "ESCUTAR",
+      sizeClass: "text-[22px] sm:text-[24px] lg:text-[18px] xl:text-[22px]",
       tag: "Essência",
       heading: "Escutar",
       body: "Entender quem existe por trás da marca: história, desejos, propósito e visão.",
     },
     {
-      num: "02",
+      term: "COMPREENDER",
+      sizeClass: "text-[18px] sm:text-[20px] lg:text-[13.5px] xl:text-[16px]",
       tag: "Significado",
       heading: "Compreender",
       body: "Encontrar os significados e percepções que tornam essa identidade única.",
     },
     {
-      num: "03",
+      term: "POSICIONAR",
+      sizeClass: "text-[19px] sm:text-[21px] lg:text-[14.5px] xl:text-[17.5px]",
       tag: "Direção",
       heading: "Posicionar",
       body: "Transformar descobertas em uma direção clara: para quem você fala e como quer ser percebido.",
     },
     {
-      num: "04",
+      term: "TRADUZIR",
+      sizeClass: "text-[21px] sm:text-[23px] lg:text-[17px] xl:text-[20px]",
       tag: "Forma",
       heading: "Traduzir",
       body: "Dar forma à estratégia através da identidade visual, linguagem e experiência.",
     },
     {
-      num: "05",
+      term: "EXPANDIR",
+      sizeClass: "text-[21px] sm:text-[23px] lg:text-[17px] xl:text-[20px]",
       tag: "Presença",
       heading: "Expandir",
       body: "Levar essa identidade para o mundo: site, redes sociais e todos os pontos de contato.",
@@ -1686,7 +1776,7 @@ function MetodoSection() {
       id="metodo"
     >
       <div className="max-w-[1200px] mx-auto">
-        <div ref={ref} className={`reveal ${visible ? "in-view" : ""} mb-10`}>
+        <div ref={headerRef} className={`reveal ${headerRevealed ? "in-view" : ""} mb-10`}>
           <p className="font-['Raleway:SemiBold',sans-serif] font-semibold text-[10px] tracking-[2.8px] uppercase text-[#8baefa] mb-4">
             Metodologia
           </p>
@@ -1704,37 +1794,7 @@ function MetodoSection() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-0">
           {steps.map((s, i) => (
-            <div
-              key={i}
-              className={`reveal ${
-                visible ? "in-view" : ""
-              } delay-${i * 100 + 100} bg-[rgba(21,93,252,0.4)] border border-[rgba(139,174,250,0.18)] ${
-                i === 0
-                  ? "rounded-tl-[16px] rounded-bl-[16px] lg:rounded-tr-none lg:rounded-br-none"
-                  : i === steps.length - 1
-                    ? "rounded-tr-[16px] rounded-br-[16px] lg:rounded-tl-none lg:rounded-bl-none"
-                    : "lg:border-l-2 lg:border-l-[#155dfc] lg:border-t-0 lg:border-r-0 lg:border-b-0"
-              } ${
-                i > 0 ? "lg:border-l-2 lg:border-l-[#155dfc]" : ""
-              } p-6 flex flex-col gap-3`}
-            >
-              <p className="font-['Raleway:Black',sans-serif] font-black text-[32px] leading-none tracking-[-0.04em] text-[#155dfc]">
-                {s.num}
-              </p>
-              <div className="flex items-center gap-2">
-                <div className="w-1.5 h-1.5 rounded-full bg-[#8baefa]" />
-                <div className="h-px flex-1 bg-[rgba(139,174,250,0.22)]" />
-              </div>
-              <p className="font-['Raleway:SemiBold',sans-serif] font-semibold text-[9px] tracking-[2.4px] uppercase text-[#8baefa]">
-                {s.tag}
-              </p>
-              <p className="font-['Raleway:Bold',sans-serif] font-bold text-[14px] tracking-[0.56px] uppercase text-white">
-                {s.heading}
-              </p>
-              <p className="font-['Raleway:Light',sans-serif] font-light text-[12px] leading-[1.75] text-[rgba(255,255,255,0.48)]">
-                {s.body}
-              </p>
-            </div>
+            <MetodoCard key={i} s={s} i={i} total={steps.length} />
           ))}
         </div>
       </div>
