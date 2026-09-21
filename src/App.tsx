@@ -1797,30 +1797,96 @@ function MetodoSection() {
 const testimonials = [
   {
     quote:
-      '"Raoni possui uma sensibilidade rara. Ele consegue traduzir necessidades complexas de negócio em experiências que tocam o usuário."',
-    name: "Clara Mendonça",
-    role: "Product Director @ Vitru",
+      '"Quero deixar uma indicação do trabalho do Raoni, designer com quem tenho a satisfação de trabalhar há mais de 20 anos\n\nRecentemente, foi responsável pelo desenvolvimento do meu site e de materiais que fazem parte da minha apresentação profissional. Mais uma vez, pude contar com sua sensibilidade, dedicação e capacidade de compreender o que eu buscava para cada projeto."',
+    name: "Paola Lopes",
+    role: "Diretora de arte/Designer e Ilustradora",
   },
   {
     quote:
-      '"Raoni possui uma sensibilidade rara. Ele consegue traduzir necessidades complexas de negócio em experiências que tocam o usuário."',
-    name: "Clara Mendonça",
-    role: "Product Director @ Vitru",
+      '"É um privilégio recomendar o Raoni! Durante o tempo em que trabalhamos juntos, pude testemunhar sua extrema competência e habilidade como líder. Como professor, sua didática é excepcional, tornando conceitos complexos compreensíveis para todos. Raoni é verdadeiramente um profissional competente e facilitador"',
+    name: "Fernanda Martins",
+    role: "Senior Product Designer",
   },
   {
     quote:
-      '"Raoni possui uma sensibilidade rara. Ele consegue traduzir necessidades complexas de negócio em experiências que tocam o usuário."',
-    name: "Clara Mendonça",
-    role: "Product Director @ Vitru",
+      '"Raoni é um profissional versátil que transita com total segurança tanto no digital quanto no offline tradicional. Sempre disposto a ajudar e vestir a camisa com ele não tem tempo ruim, contribui com ideias e sugestões para entregas mais assertivas com colocações precisas e funcionais que só profissionais do seu calibre conseguem expor, é extremamente agregador independente do tamanho do trabalho."',
+    name: "Felipe Teixeira",
+    role: "Gerente de contas na Agência WE",
   },
 ]
 
+function TestimonialCard({
+  t,
+  i,
+}: {
+  t: (typeof testimonials)[number]
+  i: number
+}) {
+  const cardRef = useRef<HTMLDivElement>(null)
+  const [revealed, setRevealed] = useState(false)
+
+  useEffect(() => {
+    const el = cardRef.current
+    if (!el || revealed) return
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setRevealed(true)
+          obs.disconnect()
+        }
+      },
+      { threshold: 0.1 },
+    )
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [revealed])
+
+  return (
+    <div
+      ref={cardRef}
+      className={`reveal ${
+        revealed ? "in-view" : ""
+      } delay-${i * 100 + 100} bg-black p-8 sm:p-10 rounded-[20px] flex flex-col justify-between hover:scale-[1.02] transition-transform duration-300`}
+    >
+      <p className="font-['Raleway:Light',sans-serif] font-light text-[15px] sm:text-[16px] leading-[1.7] text-white flex-1 whitespace-pre-line">
+        {t.quote}
+      </p>
+      <div className="border-t border-[rgba(0,0,0,0.3)] pt-5 mt-6">
+        <p className="font-['Raleway:Bold',sans-serif] font-bold text-[14px] tracking-[0.35px] uppercase text-white">
+          {t.name}
+        </p>
+        <p className="font-['Raleway:SemiBold',sans-serif] font-semibold text-[10.4px] tracking-[1px] uppercase text-[#82A9FF] mt-1">
+          {t.role}
+        </p>
+      </div>
+    </div>
+  )
+}
+
 function TestimonialsSection() {
-  const { ref, visible } = useReveal(0.1)
+  const headerRef = useRef<HTMLDivElement>(null)
+  const [headerRevealed, setHeaderRevealed] = useState(false)
+
+  useEffect(() => {
+    const el = headerRef.current
+    if (!el || headerRevealed) return
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setHeaderRevealed(true)
+          obs.disconnect()
+        }
+      },
+      { threshold: 0.1 },
+    )
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [headerRevealed])
+
   return (
     <section className="bg-[#eeeeea] py-24 px-6 md:px-12 lg:px-24">
       <div className="max-w-[1200px] mx-auto">
-        <div ref={ref} className={`reveal ${visible ? "in-view" : ""} mb-12`}>
+        <div ref={headerRef} className={`reveal ${headerRevealed ? "in-view" : ""} mb-12`}>
           <p className="font-['Raleway:SemiBold',sans-serif] font-semibold text-[10.4px] tracking-[2.6px] uppercase text-[#155dfc] mb-2">
             Depoimentos
           </p>
@@ -1829,26 +1895,9 @@ function TestimonialsSection() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
           {testimonials.map((t, i) => (
-            <div
-              key={i}
-              className={`reveal ${
-                visible ? "in-view" : ""
-              } delay-${i * 100 + 100} bg-black p-10 rounded-[20px] flex flex-col justify-between min-h-[280px] hover:scale-[1.02] transition-transform duration-300`}
-            >
-              <p className="font-['Raleway:Light',sans-serif] font-light text-[18px] leading-[1.78] text-white flex-1">
-                {t.quote}
-              </p>
-              <div className="border-t border-[rgba(0,0,0,0.3)] pt-5 mt-6">
-                <p className="font-['Raleway:Bold',sans-serif] font-bold text-[14px] tracking-[0.35px] uppercase text-white">
-                  {t.name}
-                </p>
-                <p className="font-['Raleway:SemiBold',sans-serif] font-semibold text-[10.4px] tracking-[1px] uppercase text-black mt-1">
-                  {t.role}
-                </p>
-              </div>
-            </div>
+            <TestimonialCard key={i} t={t} i={i} />
           ))}
         </div>
       </div>
