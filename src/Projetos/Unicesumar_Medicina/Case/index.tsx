@@ -343,9 +343,7 @@ function StrategicApproach() {
     <div className="bg-white w-full py-16 sm:py-24">
       <div className="flex flex-col items-center w-full">
         <div className="flex flex-col items-start max-w-[1320px] px-6 sm:px-12 lg:px-16 w-full">
-          <div className="bg-[#e5e7eb] h-px w-full" />
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 mt-14 sm:mt-20 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 w-full">
             {/* Left: heading */}
             <div className="lg:col-span-5 reveal-left">
               <p className="font-['Raleway:Medium',sans-serif] text-[#6a7282] text-[10px] tracking-[3px] uppercase leading-[15px]">
@@ -357,17 +355,33 @@ function StrategicApproach() {
             </div>
 
             {/* Right: timeline */}
-            <div className="lg:col-span-7 flex flex-col reveal-right" style={{ transitionDelay: "120ms" }}>
+            <div className="lg:col-span-7 flex flex-col">
               {strategy.map(({ label, dot, text }, i) => (
-                <div key={i} className="flex gap-6 items-start">
-                  <div className="flex flex-col items-center w-8 shrink-0">
-                    <div
-                      className="mt-6 timeline-dot rounded-full size-[9px] shrink-0"
-                      style={{ background: dot, animationDelay: `${i * 0.4}s` }}
-                    />
-                    {i < strategy.length - 1 && <div className="bg-[#e5e7eb] w-px flex-1 mt-1" style={{ height: 46 }} />}
+                <div
+                  key={i}
+                  className="reveal relative flex gap-5 sm:gap-6 items-start"
+                  style={{
+                    transitionDelay: `${i * 140}ms`,
+                    transitionDuration: "600ms",
+                  }}
+                >
+                  {/* Connecting vertical line to next step */}
+                  {i < strategy.length - 1 && (
+                    <div className="absolute left-2 -translate-x-1/2 top-[7px] bottom-[-7px] w-px bg-[#d1d5db]" />
+                  )}
+
+                  {/* Marker column */}
+                  <div className="relative flex flex-col items-center shrink-0 w-4">
+                    <div className="h-[14px] flex items-center justify-center shrink-0 z-10 relative">
+                      <div
+                        className="timeline-dot rounded-full size-[9px] shrink-0"
+                        style={{ backgroundColor: dot, animationDelay: `${i * 0.4}s` }}
+                      />
+                    </div>
                   </div>
-                  <div className="pb-8 sm:pb-10">
+
+                  {/* Step content */}
+                  <div className={i < strategy.length - 1 ? "pb-8 sm:pb-10" : ""}>
                     <p className="font-['Raleway:Medium',sans-serif] text-[#6a7282] text-[9px] tracking-[3px] uppercase leading-[13.5px]">
                       {label}
                     </p>
