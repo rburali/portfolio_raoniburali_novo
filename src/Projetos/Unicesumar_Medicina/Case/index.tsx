@@ -144,7 +144,7 @@ function CaseHero() {
           {/* Label row */}
           <div className="reveal flex gap-4 items-center shrink-0 mb-3">
             <p className="font-['Raleway:Medium',sans-serif] font-medium text-[#155dfc] text-[10px] tracking-[3px] uppercase leading-[15px]">
-              Case Study
+              Estudo de Caso
             </p>
             <div className="bg-[#155dfc] h-px w-[60px]" />
           </div>
@@ -172,13 +172,13 @@ function CaseHero() {
             style={{ transitionDelay: "240ms" }}
           >
             {[
-              { label: "Client", value: "Vitru Educação" },
-              { label: "Year", value: "2026" },
-              { label: "Role", value: "Senior Product Designer" },
-              { label: "Team", value: "1 Designer · 1 Dev · 1 PO" },
-              { label: "Timeline", value: "30 Dias" },
-              { label: "Escopo", value: "Discovery, Strategy, UI, Dev" },
-              { label: "Platform", value: "Web · Mobile" },
+              { label: "Cliente", value: "Vitru Educação" },
+              { label: "Ano", value: "2026" },
+              { label: "Função", value: "Product Designer Sênior" },
+              { label: "Equipe", value: "1 Designer · 1 Dev · 1 PO" },
+              { label: "Duração", value: "30 Dias" },
+              { label: "Escopo", value: "Discovery, Estratégia, UI, Dev" },
+              { label: "Plataforma", value: "Web · Mobile" },
             ].map(({ label, value }) => (
               <div key={label} className="flex flex-col">
                 <p className="font-['Raleway:Medium',sans-serif] font-medium text-[#155dfc] text-[9px] tracking-[2.5px] uppercase leading-[13.5px]">
@@ -261,10 +261,10 @@ function ContextSection() {
 // ─── Challenge Section ────────────────────────────────────────────────────────
 
 const challenges = [
-  { num: "01", title: "Clareza", body: "O produto não comunicava seu valor principal. Usuários chegavam sem entender o que fazer primeiro." },
-  { num: "02", title: "Conversão", body: "A jornada de ativação tinha pontos de fricção não mapeados que impactavam diretamente a receita." },
-  { num: "03", title: "Consistência", body: "Diferentes times construíram features de forma independente, criando experiências fragmentadas." },
-  { num: "04", title: "Escalabilidade", body: "A arquitetura de UI não suportava o roadmap de crescimento. Cada nova feature era construída do zero." },
+  { title: "Clareza", body: "O produto não comunicava seu valor principal. Candidatos chegavam sem entender o que fazer primeiro." },
+  { title: "Conversão", body: "A jornada de ativação tinha pontos de fricção não mapeados que impactavam diretamente a taxa de inscrição." },
+  { title: "Consistência", body: "Diferentes times construíram funcionalidades de forma independente, criando experiências fragmentadas." },
+  { title: "Escalabilidade", body: "A arquitetura de UI não suportava o crescimento contínuo. Cada nova funcionalidade era construída do zero." },
 ]
 
 function TheChallengeSection() {
@@ -274,7 +274,7 @@ function TheChallengeSection() {
         <div className="flex flex-col items-start max-w-[1320px] px-6 sm:px-12 lg:px-16 w-full">
           <div className="reveal">
             <p className="font-['Raleway:Medium',sans-serif] text-[#f3f3f1] text-[10px] tracking-[3px] uppercase leading-[15px] opacity-70">
-              03 — The Challenge
+              03 — Desafios
             </p>
             <h2 className="font-['Raleway:ExtraBold',sans-serif] font-extrabold text-[#f3f3f1] text-[36px] sm:text-[48px] leading-[1.2] mt-4">
               O desafio
@@ -282,18 +282,18 @@ function TheChallengeSection() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-12 sm:mt-16 w-full stagger">
-            {challenges.map(({ num, title, body }) => (
-              <RoverCard key={num} className="reveal border-t border-[rgba(255,255,255,0.2)] pt-8 pb-2">
-                <p className="font-['Courier_New',monospace] text-[#155dfc] text-[10px] tracking-[3px] leading-[15px] bg-white bg-opacity-90 rounded-sm inline-block px-1.5 py-0.5">
-                  {num}
-                </p>
-                <h3 className="font-['Raleway:ExtraBold',sans-serif] font-extrabold text-[#f3f3f1] text-[24px] leading-[32px] mt-4">
+            {challenges.map(({ title, body }) => (
+              <div
+                key={title}
+                className="reveal border-t border-[rgba(255,255,255,0.2)] pt-6 pb-2"
+              >
+                <h3 className="font-['Raleway:ExtraBold',sans-serif] font-extrabold text-[#f3f3f1] text-[24px] leading-[32px]">
                   {title}
                 </h3>
-                <p className="font-['Raleway:Regular',sans-serif] text-[rgba(243,243,241,0.7)] text-[14px] leading-[22px] mt-4">
+                <p className="font-['Raleway:Regular',sans-serif] text-[rgba(243,243,241,0.7)] text-[14px] leading-[22px] mt-3">
                   {body}
                 </p>
-              </RoverCard>
+              </div>
             ))}
           </div>
         </div>
@@ -307,9 +307,9 @@ function TheChallengeSection() {
 const strategy = [
   { label: "Problema", dot: "#155dfc", text: "Baixa ativação de usuários no primeiro acesso" },
   { label: "Insight", dot: "#0a0a0a", text: "Usuários não entendiam o valor antes de se engajar" },
-  { label: "Direção", dot: "#0a0a0a", text: "Antecipar o valor antes do onboarding" },
+  { label: "Direção", dot: "#0a0a0a", text: "Antecipar o valor antes da etapa de cadastro" },
   { label: "Decisão", dot: "#0a0a0a", text: "Redesenhar o modelo mental de entrada no produto" },
-  { label: "Solução", dot: "#0a0a0a", text: "Nova experiência de first-run com progressive disclosure" },
+  { label: "Solução", dot: "#0a0a0a", text: "Nova experiência de primeiro acesso com revelação progressiva" },
 ]
 
 function StrategicApproach() {
@@ -323,7 +323,7 @@ function StrategicApproach() {
             {/* Left: heading */}
             <div className="lg:col-span-5 reveal-left">
               <p className="font-['Raleway:Medium',sans-serif] text-[#6a7282] text-[10px] tracking-[3px] uppercase leading-[15px]">
-                04 — Strategic Approach
+                04 — Abordagem Estratégica
               </p>
               <h2 className="font-['Raleway:ExtraBold',sans-serif] font-extrabold text-[#0a0a0a] text-[34px] sm:text-[46px] leading-[1.2] mt-4">
                 Como transformamos o problema em direção
@@ -451,7 +451,7 @@ function KeyDecisions() {
           <div className="bg-[#e5e7eb] h-px w-full" />
           <div className="reveal pt-14 sm:pt-20 mb-6">
             <p className="font-['Raleway:Medium',sans-serif] text-[#6a7282] text-[10px] tracking-[3px] uppercase leading-[15px]">
-              05 — Key Decisions
+              05 — Decisões-Chave
             </p>
             <h2 className="font-['Raleway:ExtraBold',sans-serif] font-extrabold text-[#0a0a0a] text-[34px] sm:text-[46px] leading-[1.2] mt-4">
               As decisões que mudaram o projeto
@@ -463,19 +463,19 @@ function KeyDecisions() {
             title="Priorizamos o problema certo"
             context="Existiam múltiplas hipóteses sobre o que causava a evasão na etapa inicial de cadastro."
             reason="A análise de dados mostrou que 68% dos candidatos desistiam no formulário excessivo. O problema não era atratividade da marca — era sobrecarga burocrática."
-            result="Redirecionamos o fluxo para um onboarding em etapas simples antes de qualquer wireframe."
+            result="Redirecionamos o fluxo para uma jornada em etapas simples antes de qualquer wireframe."
             image={imgLaptop}
-            imageAlt="Laptop mockup"
+            imageAlt="Mockup em laptop"
           />
 
           <DecisionBlock
             num="Decisão 02"
-            title="Substituímos o onboarding linear"
+            title="Substituímos o fluxo linear"
             context="O fluxo existente tinha 7 etapas sequenciais com taxa de abandono progressiva."
             reason="Pesquisa com calouros revelou que eles queriam ver a estrutura dos laboratórios reais antes de se comprometerem."
-            result="Criamos um modelo de progressive disclosure que reduziu o tempo para conversão em 40%."
+            result="Criamos um modelo de revelação progressiva que reduziu o tempo para conversão em 40%."
             image={imgPhone}
-            imageAlt="Phone mockup"
+            imageAlt="Mockup em smartphone"
             imageLeft
           />
 
@@ -510,7 +510,7 @@ function KeyDecisions() {
                     Resultado
                   </p>
                   <p className="font-['Raleway:SemiBold',sans-serif] text-[#0a0a0a] text-[14px] leading-[20px] mt-1">
-                    Velocidade de lançamento de novas LPs aumentou 3x nas campanhas seguintes.
+                    Velocidade de lançamento de novas páginas aumentou 3x nas campanhas seguintes.
                   </p>
                 </div>
               </div>
@@ -554,7 +554,7 @@ function KeyDecisions() {
 // ─── The Solution ─────────────────────────────────────────────────────────────
 
 const solutionCards = [
-  { image: imgLpMedicina, caption: "Flows críticos foram simplificados de 7 para 3 etapas sem perda de funcionalidade." },
+  { image: imgLpMedicina, caption: "Fluxos críticos foram simplificados de 7 para 3 etapas sem perda de funcionalidade." },
   { image: null, caption: "Interface construída sobre um sistema de grid rigoroso com hierarquia tipográfica intencional." },
   { image: null, caption: "72 componentes documentados com variantes, tokens e diretrizes de uso." },
   { image: null, caption: "Experiência mobile-first com adaptação progressiva para tablet e desktop." },
@@ -567,7 +567,7 @@ function TheSolution() {
         <div className="flex flex-col items-start max-w-[1320px] px-6 sm:px-12 lg:px-16 w-full">
           <div className="reveal">
             <p className="font-['Raleway:Medium',sans-serif] text-[#afc8ff] text-[10px] tracking-[3px] uppercase leading-[15px]">
-              06 — The Solution
+              06 — A Solução
             </p>
             <h2 className="font-['Raleway:ExtraBold',sans-serif] font-extrabold text-[#f3f3f1] text-[36px] sm:text-[48px] leading-[1.2] mt-4">
               A solução
@@ -611,10 +611,10 @@ function TheSolution() {
 // ─── Impact Section ───────────────────────────────────────────────────────────
 
 const metrics = [
-  { category: "Business", value: "80%", label: "Conversão de Leads na Ponta do Funil" },
-  { category: "Product", value: "3×", label: "Aumento do tempo que o usuário permaneceu na página" },
-  { category: "User", value: "−40%", label: "Redução no tempo para conclusão da inscrição" },
-  { category: "Brand", value: "NPS 72", label: "Satisfação dos candidatos — recorde histórico da campanha" },
+  { category: "Negócio", value: "80%", label: "Conversão de leads na ponta do funil" },
+  { category: "Produto", value: "3×", label: "Aumento do tempo que o usuário permaneceu na página" },
+  { category: "Usuário", value: "−40%", label: "Redução no tempo para conclusão da inscrição" },
+  { category: "Marca", value: "NPS 72", label: "Satisfação dos candidatos — recorde histórico da campanha" },
 ]
 
 function ImpactSection() {
@@ -625,7 +625,7 @@ function ImpactSection() {
           <div className="bg-[#e5e7eb] h-px w-full" />
           <div className="reveal pt-14 sm:pt-20">
             <p className="font-['Raleway:Medium',sans-serif] text-[#6a7282] text-[10px] tracking-[3px] uppercase leading-[15px]">
-              07 — Impact
+              07 — Impacto
             </p>
             <h2 className="font-['Raleway:ExtraBold',sans-serif] font-extrabold text-[#0a0a0a] text-[34px] sm:text-[48px] leading-[1.2] mt-4">
               Impacto
@@ -684,7 +684,7 @@ const learnings = [
   {
     num: "02",
     title: "Design system é produto, não entregável",
-    body: "A diferença entre um design system que a empresa usa e um que fica no Figma é simples: ownership, roadmap e adoção ativa. Tudo o que eu tinha feito antes era documentação. Isso foi produto.",
+    body: "A diferença entre um design system que a empresa usa e um que fica no Figma é simples: senso de dono, planejamento e adoção ativa. Tudo o que eu tinha feito antes era documentação. Isso foi produto.",
   },
   {
     num: "03",
@@ -703,7 +703,7 @@ function Learnings() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 mt-14 sm:mt-20 w-full">
             <div className="lg:col-span-5 reveal-left">
               <p className="font-['Raleway:Medium',sans-serif] text-[#6a7282] text-[10px] tracking-[3px] uppercase leading-[15px]">
-                08 — Learnings
+                08 — Aprendizados
               </p>
               <h2 className="font-['Raleway:ExtraBold',sans-serif] font-extrabold text-[#0a0a0a] text-[34px] sm:text-[46px] leading-[1.2] mt-4">
                 O que eu aprendi
@@ -774,7 +774,7 @@ function NextCase({ onNavigate }: { onNavigate: (to: string) => void }) {
                 <div className="flex items-center gap-2 mt-2">
                   <ArrowIcon flipped />
                   <span className="font-['Raleway:Bold',sans-serif] text-[#87acfd] text-[10px] tracking-[2px] uppercase group-hover:underline underline-offset-4 transition-all">
-                    VER CASE
+                    VER ESTUDO DE CASO
                   </span>
                 </div>
               </div>
@@ -802,7 +802,7 @@ function NextCase({ onNavigate }: { onNavigate: (to: string) => void }) {
                 </div>
                 <div className="flex items-center gap-2 mt-2">
                   <span className="font-['Raleway:Bold',sans-serif] text-[#87acfd] text-[10px] tracking-[2px] uppercase group-hover:underline underline-offset-4 transition-all">
-                    VER CASE
+                    VER ESTUDO DE CASO
                   </span>
                   <ArrowIcon />
                 </div>
