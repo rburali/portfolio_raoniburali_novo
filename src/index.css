@@ -44,6 +44,34 @@
   font-display: swap;
 }
 @font-face {
+  font-family: "Raleway:ExtraBold";
+  src: url("https://fonts.gstatic.com/s/raleway/v37/1Ptug8zYS_SKggPNyC0IT4ttDfA.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Poppins:Regular";
+  src: url("https://fonts.gstatic.com/s/poppins/v21/pxiEyp8kv8JHgFVrFJA.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Poppins:Medium";
+  src: url("https://fonts.gstatic.com/s/poppins/v21/pxiByp8kv8JHgFVrLGT9Z1xlEA.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Poppins:Bold";
+  src: url("https://fonts.gstatic.com/s/poppins/v21/pxiByp8kv8JHgFVrLCz7Z1xlEA.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
   font-family: "Inter:Regular";
   src: url("https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hjp-Ek-_eeA.woff2") format("woff2");
   font-weight: 400;
@@ -185,5 +213,81 @@ html {
     background: white !important;
     color: black !important;
   }
+}
+
+/* ── Case Study Animations & Utilities ── */
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-32px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(32px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-scale.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.stagger > *:nth-child(1) { transition-delay: 0ms; }
+.stagger > *:nth-child(2) { transition-delay: 80ms; }
+.stagger > *:nth-child(3) { transition-delay: 160ms; }
+.stagger > *:nth-child(4) { transition-delay: 240ms; }
+
+.rover-card {
+  transform-style: preserve-3d;
+  transition: transform 0.1s ease-out, box-shadow 0.3s ease;
+  will-change: transform;
+}
+
+.rover-card:hover {
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+}
+
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.metric-value {
+  animation: none;
+}
+
+.metric-value.animate {
+  animation: countUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes dotPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.7; }
+}
+
+.timeline-dot {
+  animation: dotPulse 2s ease-in-out infinite;
 }
 
