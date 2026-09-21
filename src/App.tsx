@@ -1641,7 +1641,6 @@ interface MetodoStep {
   term: string
   sizeClass: string
   tag: string
-  heading: string
   body: string
 }
 
@@ -1702,9 +1701,6 @@ function MetodoCard({
       <p className="font-['Raleway:SemiBold',sans-serif] font-semibold text-[9px] tracking-[2.4px] uppercase text-[#8baefa]">
         {s.tag}
       </p>
-      <p className="font-['Raleway:Bold',sans-serif] font-bold text-[14px] tracking-[0.56px] uppercase text-white">
-        {s.heading}
-      </p>
       <p className="font-['Raleway:Light',sans-serif] font-light text-[12px] leading-[1.75] text-[rgba(255,255,255,0.48)]">
         {s.body}
       </p>
@@ -1737,35 +1733,30 @@ function MetodoSection() {
       term: "ESCUTAR",
       sizeClass: "text-[22px] sm:text-[24px] lg:text-[18px] xl:text-[22px]",
       tag: "Essência",
-      heading: "Escutar",
       body: "Entender quem existe por trás da marca: história, desejos, propósito e visão.",
     },
     {
       term: "COMPREENDER",
       sizeClass: "text-[18px] sm:text-[20px] lg:text-[13.5px] xl:text-[16px]",
       tag: "Significado",
-      heading: "Compreender",
       body: "Encontrar os significados e percepções que tornam essa identidade única.",
     },
     {
       term: "POSICIONAR",
       sizeClass: "text-[19px] sm:text-[21px] lg:text-[14.5px] xl:text-[17.5px]",
       tag: "Direção",
-      heading: "Posicionar",
       body: "Transformar descobertas em uma direção clara: para quem você fala e como quer ser percebido.",
     },
     {
       term: "TRADUZIR",
       sizeClass: "text-[21px] sm:text-[23px] lg:text-[17px] xl:text-[20px]",
       tag: "Forma",
-      heading: "Traduzir",
       body: "Dar forma à estratégia através da identidade visual, linguagem e experiência.",
     },
     {
       term: "EXPANDIR",
       sizeClass: "text-[21px] sm:text-[23px] lg:text-[17px] xl:text-[20px]",
       tag: "Presença",
-      heading: "Expandir",
       body: "Levar essa identidade para o mundo: site, redes sociais e todos os pontos de contato.",
     },
   ]
