@@ -343,11 +343,11 @@ function TheChallengeSection() {
 // ─── Strategic Approach ───────────────────────────────────────────────────────
 
 const strategy = [
-  { label: "Problema", dot: "#155dfc", text: "Baixa ativação de usuários no primeiro acesso" },
-  { label: "Insight", dot: "#0a0a0a", text: "Usuários não entendiam o valor antes de se engajar" },
-  { label: "Direção", dot: "#0a0a0a", text: "Antecipar o valor antes da etapa de cadastro" },
-  { label: "Decisão", dot: "#0a0a0a", text: "Redesenhar o modelo mental de entrada no produto" },
-  { label: "Solução", dot: "#0a0a0a", text: "Nova experiência de primeiro acesso com revelação progressiva" },
+  { label: "Problema", dot: "#155dfc", text: "Baixa conversão de Inscritos no vestibular dificuldades no cadastro." },
+  { label: "Insight", dot: "#0a0a0a", text: "Alunos não compravam o curso por falta de informação, baixa percepção de valor." },
+  { label: "Direção", dot: "#0a0a0a", text: "Alta conversão de inscritos/leads para nutrição e futura inscrição no curso." },
+  { label: "Decisão", dot: "#0a0a0a", text: "Priorizar a Landing Page para principal fonte de inscrição no vestibular." },
+  { label: "Solução", dot: "#0a0a0a", text: "Nova página, novo visual, novo design e conteúdo com foco no valor do curso para o aluno." },
 ]
 
 function StrategicApproach() {
