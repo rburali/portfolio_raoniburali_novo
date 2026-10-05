@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useCallback, MouseEvent } from "react"
 import svgPaths from "@/imports/CasoDeEstudoVestibularUnicesumar/svg-gqrgp2oyjk"
 import imgHeroMedicina from "@/imports/CasoDeEstudoVestibularUnicesumar/hero-composicao-medicina.png"
-import imgLaptop from "@/imports/CasoDeEstudoVestibularUnicesumar/8bda84c504914d17b03801295eeb40774833ba9f.png"
-import imgPhone from "@/imports/CasoDeEstudoVestibularUnicesumar/4cc2372bde310ebd1c402970c972632493ad68ec.png"
-import imgInfoArch from "@/imports/CasoDeEstudoVestibularUnicesumar/9a19153988fb006a0c5e0625397d81bd24fa9c3f.png"
-import imgWireframe from "@/imports/CasoDeEstudoVestibularUnicesumar/72c3c6e48944cc2d725bfea2180e73f9d8283009.png"
-import imgLpMedicina from "@/imports/CasoDeEstudoVestibularUnicesumar/3b0c8281b0227e042ea51d34d14d5e52d1e99b55.png"
+import imgDecisao1 from "@/imports/CasoDeEstudoVestibularUnicesumar/decisao-1.png"
+import imgDecisao2 from "@/imports/CasoDeEstudoVestibularUnicesumar/decisao-2.png"
+import imgDecisao3 from "@/imports/CasoDeEstudoVestibularUnicesumar/decisao-3.png"
+import imgMockupPrincipal from "@/imports/CasoDeEstudoVestibularUnicesumar/Mockup_principal.png"
+import imgMockupHands from "@/imports/CasoDeEstudoVestibularUnicesumar/Mockup_hands.png"
 import imgProxCase from "@/imports/CasoDeEstudoVestibularUnicesumar/d9bb843826c7fe559fd5994aa1b57dfc59cff2b1.png"
 import imgProxCase1 from "@/imports/CasoDeEstudoVestibularUnicesumar/dde623d84acab1d612f65cd576e99f14f8b5311d.png"
 import imgLogoRodape from "@/imports/LOGO_RODAPE.png"
@@ -266,14 +266,14 @@ function ContextSection() {
             {/* Right: body */}
             <div className="lg:col-span-7 reveal-right" style={{ transitionDelay: "120ms" }}>
               <p className="font-['Raleway:Regular',sans-serif] text-[#6a7282] text-[15.5px] sm:text-[16px] leading-[1.7] max-w-[669px]">
-                O processo seletivo do vestibular de Medicina da UniCesumar é uma das maiores captações da instituição, exigindo campanhas de mídia expressivas. No entanto, a antiga experiência digital gerava alta evasão de potenciais candidatos devido a formulários densos e sobrecarga cognitiva.
+                O processo seletivo do vestibular de Medicina da UniCesumar é uma das maiores captações da instituição, exigindo campanhas de mídia expressivas. No entanto, a antiga experiência digital gerava alta evasão de potenciais candidatos devido a formulários complexos, jornada de fluxo quebrada e sobrecarga cognitiva no preenchimento do cadastro.
               </p>
               <p className="font-['Raleway:Regular',sans-serif] text-[#6a7282] text-[15.5px] sm:text-[16px] leading-[1.7] max-w-[669px] mt-6">
-                Era imperativo reimaginar a jornada com uma narrativa mobile-first que comunicasse a excelência e autoridade hospitalar da universidade, transformando cliques de campanhas em inscrições concluídas com fricção mínima.
+                Era importante comunicar a qualidade do curso de Medicina com o intuito de gerar a inscrição para o processo seletivo na página, transformando tráfego pago em conversão para contato comercial futuro e uma nutrição do lead pela equipe comercial.
               </p>
               <div className="border-l-[2px] border-[#155dfc] pl-6 sm:pl-8 py-2 mt-10 sm:mt-14">
                 <p className="font-['Raleway:Light',sans-serif] font-light text-[#0a0a0a] text-[22px] sm:text-[28px] leading-[1.35] max-w-[636px]">
-                  "Não basta gerar tráfego qualificado se a experiência de conversão não acolhe e orienta o candidato na decisão de sua vida."
+                  "Não basta gerar tráfego qualificado se a experiência de conversão não acolhe e orienta o candidato na decisão de se inscrever na escolha mais importante de sua vida profissional."
                 </p>
               </div>
             </div>
@@ -287,10 +287,22 @@ function ContextSection() {
 // ─── Challenge Section ────────────────────────────────────────────────────────
 
 const challenges = [
-  { title: "Clareza", body: "O produto não comunicava seu valor principal. Candidatos chegavam sem entender o que fazer primeiro." },
-  { title: "Conversão", body: "A jornada de ativação tinha pontos de fricção não mapeados que impactavam diretamente a taxa de inscrição." },
-  { title: "Consistência", body: "Diferentes times construíram funcionalidades de forma independente, criando experiências fragmentadas." },
-  { title: "Escalabilidade", body: "A arquitetura de UI não suportava o crescimento contínuo. Cada nova funcionalidade era construída do zero." },
+  {
+    title: "Clareza",
+    body: "O curso não comunicava seu valor principal. Usuários chegavam sem entender o que fazer primeiro.",
+  },
+  {
+    title: "Conversão",
+    body: "A jornada de inscrição do aluno tinha pontos de fricção não mapeados que impactavam diretamente a conversão/inscrição do aluno.",
+  },
+  {
+    title: "Consistência",
+    body: "Concentramos toda a jornada de inscrição no vestibular na Landing Page, direcionando todo o esforço publicitário para essa página gerando leads que podiam ser facilmente nutridos e convertidos pela equipe comercial.",
+  },
+  {
+    title: "Design",
+    body: "O design foi todo desenvolvido para tirar o máximo de dúvidas possível do aluno, com visual moderno e alinhado com a marca Unicesumar. Tratamos o Design tanto visual quanto de conteúdo como diferencial competitivo.",
+  },
 ]
 
 function TheChallengeSection() {
@@ -300,7 +312,7 @@ function TheChallengeSection() {
         <div className="flex flex-col items-start max-w-[1320px] px-6 sm:px-12 lg:px-16 w-full">
           <div className="reveal">
             <p className="font-['Raleway:Medium',sans-serif] text-[#f3f3f1] text-[10px] tracking-[3px] uppercase leading-[15px] opacity-70">
-              03 — Desafios
+              03 — The Challenge
             </p>
             <h2 className="font-['Raleway:ExtraBold',sans-serif] font-extrabold text-[#f3f3f1] text-[36px] sm:text-[48px] leading-[1.2] mt-4">
               O desafio
@@ -458,12 +470,12 @@ function DecisionBlock({
   )
 
   const imgCol = (
-    <RoverCard
-      className={`col-span-1 lg:col-span-6 ${imageLeft ? "lg:order-first" : "lg:col-start-7"} reveal-scale rounded-[14px] overflow-hidden shadow-sm`}
+    <div
+      className={`col-span-1 lg:col-span-6 ${imageLeft ? "lg:order-first" : "lg:col-start-7"} reveal-scale flex items-center justify-center`}
       style={{ transitionDelay: "160ms" } as React.CSSProperties}
     >
-      <img alt={imageAlt} src={image} className="w-full h-full object-cover" style={{ minHeight: 260 }} />
-    </RoverCard>
+      <img alt={imageAlt} src={image} className="w-full h-auto object-contain block" />
+    </div>
   )
 
   return (
@@ -499,212 +511,139 @@ function KeyDecisions() {
           </div>
 
           <DecisionBlock
-            num="Decisão 01"
+            num="DECISÃO 1"
             title="Priorizamos o problema certo"
             context="Existiam múltiplas hipóteses sobre o que causava a evasão na etapa inicial de cadastro."
             reason="A análise de dados mostrou que 68% dos candidatos desistiam no formulário excessivo. O problema não era atratividade da marca — era sobrecarga burocrática."
             result="Redirecionamos o fluxo para uma jornada em etapas simples antes de qualquer wireframe."
-            image={imgLaptop}
-            imageAlt="Mockup em laptop"
+            image={imgDecisao1}
+            imageAlt="Tipografia Poppins"
           />
 
           <DecisionBlock
-            num="Decisão 02"
+            num="DECISÃO 2"
             title="Substituímos o fluxo linear"
             context="O fluxo existente tinha 7 etapas sequenciais com taxa de abandono progressiva."
             reason="Pesquisa com calouros revelou que eles queriam ver a estrutura dos laboratórios reais antes de se comprometerem."
             result="Criamos um modelo de revelação progressiva que reduziu o tempo para conversão em 40%."
-            image={imgPhone}
-            imageAlt="Mockup em smartphone"
+            image={imgDecisao2}
+            imageAlt="Mockup em laptop e smartphone"
             imageLeft
           />
 
-          {/* Decision 03 */}
-          <div className="border-t border-[#e5e7eb] grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 py-12 sm:py-16 items-center">
-            <div className="col-span-1 lg:col-span-5 reveal-left">
-              <p className="font-['Courier_New',monospace] text-[#155dfc] text-[10px] tracking-[3px] leading-[15px] font-bold">
-                Decisão 03
-              </p>
-              <h3 className="font-['Raleway:ExtraBold',sans-serif] font-extrabold text-[#0a0a0a] text-[26px] sm:text-[30px] leading-[1.25] mt-4">
-                Design System como produto interno
-              </h3>
-              <div className="flex flex-col gap-5 mt-6">
-                <div>
-                  <p className="font-['Raleway:Medium',sans-serif] text-[#6a7282] text-[9px] tracking-[2.5px] uppercase leading-[13.5px]">
-                    Contexto
-                  </p>
-                  <p className="font-['Raleway:Regular',sans-serif] text-[#6a7282] text-[14px] leading-[22px] mt-1.5">
-                    Cada campanha construía UI independentemente, criando inconsistência sistêmica e lentidão técnica.
-                  </p>
-                </div>
-                <div>
-                  <p className="font-['Raleway:Medium',sans-serif] text-[#6a7282] text-[9px] tracking-[2.5px] uppercase leading-[13.5px]">
-                    Por que essa decisão
-                  </p>
-                  <p className="font-['Raleway:Regular',sans-serif] text-[#0a0a0a] text-[14px] leading-[22px] mt-1.5">
-                    Tratamos o design system como produto com tokens e componentes reutilizáveis, reduzindo tempo de desenvolvimento.
-                  </p>
-                </div>
-                <div className="border-l-[2px] border-[#155dfc] pl-4 py-1">
-                  <p className="font-['Raleway:Medium',sans-serif] text-[#155dfc] text-[9px] tracking-[2.5px] uppercase leading-[13.5px]">
-                    Resultado
-                  </p>
-                  <p className="font-['Raleway:SemiBold',sans-serif] text-[#0a0a0a] text-[14px] leading-[20px] mt-1">
-                    Velocidade de lançamento de novas páginas aumentou 3x nas campanhas seguintes.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Design System visual */}
-            <RoverCard
-              className="col-span-1 lg:col-span-6 lg:col-start-7 reveal-right rounded-[16px] overflow-hidden bg-[#00a6e2] shadow-sm"
-              style={{ transitionDelay: "160ms" } as React.CSSProperties}
-            >
-              <div className="h-[320px] sm:h-[380px] flex flex-col items-center justify-center relative overflow-hidden p-6">
-                <p className="font-['Poppins:Bold',sans-serif] text-white text-[140px] sm:text-[180px] leading-none opacity-20 absolute select-none pointer-events-none">
-                  Me
-                </p>
-                <div className="relative z-10 flex flex-col items-center gap-2">
-                  <p className="font-['Poppins:Bold',sans-serif] text-white text-[28px] sm:text-[32px] leading-tight tracking-wider">
-                    POPPINS
-                  </p>
-                  <div className="flex gap-2 sm:gap-3 mt-2">
-                    {["#001321", "#002c4d", "#00467a", "#0073c8", "#a9daff"].map((c) => (
-                      <div key={c} className="flex flex-col items-center gap-2">
-                        <div className="h-[42px] sm:h-[52px] w-[42px] sm:w-[52px] rounded-full shadow-md" style={{ background: c }} />
-                      </div>
-                    ))}
-                  </div>
-                  <div className="flex flex-col items-center mt-4 gap-0.5">
-                    <p className="font-['Poppins:Regular',sans-serif] text-white text-[15px]">Regular</p>
-                    <p className="font-['Poppins:Medium',sans-serif] text-white text-[15px]">Medium</p>
-                    <p className="font-['Poppins:Bold',sans-serif] text-white text-[15px]">Bold</p>
-                  </div>
-                </div>
-              </div>
-            </RoverCard>
-          </div>
+          <DecisionBlock
+            num="DECISÃO 3"
+            title="Design System como produto interno"
+            context="Cada campanha construía UI independentemente, criando inconsistência sistêmica e lentidão técnica."
+            reason="Tratamos o design system como produto com tokens e componentes reutilizáveis, reduzindo tempo de desenvolvimento."
+            result="Velocidade de lançamento de novas páginas aumentou 3x nas campanhas seguintes."
+            image={imgDecisao3}
+            imageAlt="Telas em smartphones"
+          />
         </div>
       </div>
     </div>
   )
 }
 
-// ─── The Solution ─────────────────────────────────────────────────────────────
-
-const solutionCards = [
-  { image: imgLpMedicina, caption: "Fluxos críticos foram simplificados de 7 para 3 etapas sem perda de funcionalidade." },
-  { image: null, caption: "Interface construída sobre um sistema de grid rigoroso com hierarquia tipográfica intencional." },
-  { image: null, caption: "72 componentes documentados com variantes, tokens e diretrizes de uso." },
-  { image: null, caption: "Experiência mobile-first com adaptação progressiva para tablet e desktop." },
-]
+// ─── The Solution & Impact ───────────────────────────────────────────────────
 
 function TheSolution() {
   return (
-    <div className="bg-[#0a0a0a] w-full py-16 sm:py-28">
+    <div className="bg-[#00467a] w-full pt-16 sm:pt-24 lg:pt-28 pb-0 relative overflow-hidden">
       <div className="flex flex-col items-center w-full">
-        <div className="flex flex-col items-start max-w-[1320px] px-6 sm:px-12 lg:px-16 w-full">
+        <div className="flex flex-col items-start max-w-[1320px] px-6 sm:px-12 lg:px-16 w-full relative">
+          {/* 06 — The Solution Header */}
           <div className="reveal">
             <p className="font-['Raleway:Medium',sans-serif] text-[#afc8ff] text-[10px] tracking-[3px] uppercase leading-[15px]">
-              06 — A Solução
+              06 — THE SOLUTION
             </p>
             <h2 className="font-['Raleway:ExtraBold',sans-serif] font-extrabold text-[#f3f3f1] text-[36px] sm:text-[48px] leading-[1.2] mt-4">
               A solução
             </h2>
           </div>
 
-          {/* Main solution image banner */}
-          <div className="reveal-scale mt-10 sm:mt-16 w-full rounded-[16px] overflow-hidden bg-[#1a1a1a]" style={{ transitionDelay: "100ms" }}>
-            <div className="relative h-[360px] sm:h-[500px] lg:h-[611px] opacity-95 overflow-hidden">
-              <div className="absolute inset-0 overflow-hidden">
-                <img alt="Arquitetura da informação" className="absolute w-full object-cover" style={{ height: "113.8%", top: "-14.15%", left: 0 }} src={imgInfoArch} />
-              </div>
-              <div className="absolute inset-0 bg-[#155dfc]/60 mix-blend-color" />
-              <div className="absolute inset-0 flex items-center justify-center p-4">
-                <img alt="Wireframe" className="max-w-full max-h-full object-contain drop-shadow-2xl" src={imgWireframe} />
-              </div>
-            </div>
+          {/* Desktop Mockup Laptop Banner */}
+          <div
+            className="reveal-scale mt-10 sm:mt-14 w-full relative z-10"
+            style={{ transitionDelay: "100ms" }}
+          >
+            <img
+              alt="A solução - Mockup Desktop Medicina UniCesumar"
+              src={imgMockupPrincipal}
+              className="w-full h-auto block max-w-[1192px] mx-auto select-none"
+            />
           </div>
 
-          {/* 4 Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-8 w-full stagger">
-            {solutionCards.map(({ image, caption }, i) => (
-              <RoverCard key={i} className="reveal flex flex-col gap-4">
-                <div className="rounded-[12px] overflow-hidden bg-[#155dfc] h-[190px] sm:h-[210px] relative">
-                  {image && (
-                    <img alt="" className="w-full h-full object-cover" src={image} />
-                  )}
+          {/* Bottom Area: 07 — Impact & Metrics (Left) + Mobile Hands (Right) */}
+          <div className="w-full relative z-20">
+            {/* Left Content Column: Impact, Metrics & Desdobramentos */}
+            <div className="w-full lg:max-w-[580px] xl:max-w-[640px] pt-8 sm:pt-12 lg:pt-14 pb-12 sm:pb-16 lg:pb-20">
+              <div className="reveal">
+                <p className="font-['Raleway:Medium',sans-serif] text-[#afc8ff] text-[10px] tracking-[3px] uppercase leading-[15px]">
+                  07 — IMPACT
+                </p>
+                <h2 className="font-['Raleway:ExtraBold',sans-serif] font-extrabold text-[#f3f3f1] text-[36px] sm:text-[48px] leading-[1.2] mt-4">
+                  Impacto
+                </h2>
+              </div>
+
+              {/* Metrics Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-10 mt-10 sm:mt-12 w-full stagger">
+                <div className="reveal border-t border-white/20 pt-6">
+                  <p className="font-['Raleway:SemiBold',sans-serif] font-semibold text-white/80 text-[10px] sm:text-[11px] tracking-[2.5px] uppercase">
+                    BUSINESS
+                  </p>
+                  <p className="metric-value font-['Raleway:ExtraBold',sans-serif] font-extrabold text-white text-[56px] sm:text-[76px] tracking-[-1.5px] leading-tight mt-2 sm:mt-3">
+                    80%
+                  </p>
+                  <p className="font-['Raleway:Regular',sans-serif] text-white/90 text-[14px] sm:text-[15px] leading-[22px] mt-3">
+                    Conversão de Leads Ponta de Funil
+                  </p>
                 </div>
-                <p className="font-['Raleway:Regular',sans-serif] text-[#f4f8ff] text-[13px] leading-[20px]">
-                  {caption}
+
+                <div className="reveal border-t border-white/20 pt-6">
+                  <p className="font-['Raleway:SemiBold',sans-serif] font-semibold text-white/80 text-[10px] sm:text-[11px] tracking-[2.5px] uppercase">
+                    PRODUCT
+                  </p>
+                  <p className="metric-value font-['Raleway:ExtraBold',sans-serif] font-extrabold text-white text-[56px] sm:text-[76px] tracking-[-1.5px] leading-tight mt-2 sm:mt-3">
+                    3×
+                  </p>
+                  <p className="font-['Raleway:Regular',sans-serif] text-white/90 text-[14px] sm:text-[15px] leading-[22px] mt-3">
+                    Do tempo que o usuário ficou na página
+                  </p>
+                </div>
+              </div>
+
+              {/* Desdobramentos */}
+              <div className="reveal mt-12 sm:mt-16" style={{ transitionDelay: "150ms" }}>
+                <p className="font-['Raleway:SemiBold',sans-serif] font-semibold text-white/80 text-[10px] sm:text-[11px] tracking-[2.5px] uppercase">
+                  DESDOBRAMENTOS
                 </p>
-              </RoverCard>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-// ─── Impact Section ───────────────────────────────────────────────────────────
-
-const metrics = [
-  { category: "Negócio", value: "80%", label: "Conversão de leads na ponta do funil" },
-  { category: "Produto", value: "3×", label: "Aumento do tempo que o usuário permaneceu na página" },
-  { category: "Usuário", value: "−40%", label: "Redução no tempo para conclusão da inscrição" },
-  { category: "Marca", value: "NPS 72", label: "Satisfação dos candidatos — recorde histórico da campanha" },
-]
-
-function ImpactSection() {
-  return (
-    <div className="bg-[#f3f3f1] w-full pt-16 sm:pt-24 pb-12 sm:pb-16">
-      <div className="flex flex-col items-center w-full">
-        <div className="flex flex-col items-start max-w-[1320px] px-6 sm:px-12 lg:px-16 w-full">
-          <div className="bg-[#e5e7eb] h-px w-full" />
-          <div className="reveal pt-14 sm:pt-20">
-            <p className="font-['Raleway:Medium',sans-serif] text-[#6a7282] text-[10px] tracking-[3px] uppercase leading-[15px]">
-              07 — Impacto
-            </p>
-            <h2 className="font-['Raleway:ExtraBold',sans-serif] font-extrabold text-[#0a0a0a] text-[34px] sm:text-[48px] leading-[1.2] mt-4">
-              Impacto
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-12 sm:mt-16 w-full stagger">
-            {metrics.map(({ category, value, label }) => (
-              <RoverCard key={value} className="reveal border-t border-[#e5e7eb] pt-6 sm:pt-8">
-                <p className="font-['Raleway:Medium',sans-serif] text-[#155dfc] text-[9px] tracking-[2.5px] uppercase leading-[13.5px]">
-                  {category}
+                <p className="font-['Raleway:Medium',sans-serif] text-[#00a6e2] text-[16px] sm:text-[18px] leading-[1.6] mt-3 max-w-[500px]">
+                  A metodologia aplicada neste projeto foi adotada como padrão para os próximos três grandes projetos da empresa.
                 </p>
-                <p className="metric-value font-['Raleway:ExtraBold',sans-serif] font-extrabold text-[#0a0a0a] text-[52px] sm:text-[68px] tracking-[-1.5px] leading-tight mt-3">
-                  {value}
-                </p>
-                <p className="font-['Raleway:Regular',sans-serif] text-[#6a7282] text-[14px] leading-[22px] mt-3">
-                  {label}
-                </p>
-              </RoverCard>
-            ))}
-          </div>
-
-          {/* Qualitative impact */}
-          <div className="border-t border-[#e5e7eb] grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 mt-16 sm:mt-20 pt-10 sm:pt-12 w-full">
-            <div className="reveal-left">
-              <p className="font-['Raleway:Medium',sans-serif] text-[#6a7282] text-[9px] tracking-[2.5px] uppercase leading-[13.5px]">
-                Impacto Qualitativo
-              </p>
-              <p className="font-['Raleway:Regular',sans-serif] text-[#0a0a0a] text-[16px] sm:text-[18px] leading-[1.65] mt-3">
-                O projeto estabeleceu um novo patamar de excelência para os canais de vestibular da Vitru Educação. O Design System concebido passou a orientar todas as esteiras de novos cursos com agilidade e consistência visual rigorosa.
-              </p>
+              </div>
             </div>
-            <div className="reveal-right" style={{ transitionDelay: "120ms" }}>
-              <p className="font-['Raleway:Medium',sans-serif] text-[#6a7282] text-[9px] tracking-[2.5px] uppercase leading-[13.5px]">
-                Desdobramentos
-              </p>
-              <p className="font-['Raleway:Regular',sans-serif] text-[#0a0a0a] text-[16px] sm:text-[18px] leading-[1.65] mt-3">
-                A estrutura de formulário progressivo foi replicada para mais de 12 produtos e cursos estratégicos da instituição, multiplicando a taxa de captação global e reduzindo custos operacionais.
-              </p>
+
+            {/* Desktop Mockup Hands: Absolute docked to bottom-right, overlapping laptop */}
+            <div
+              className="hidden lg:block absolute right-[-24px] xl:right-[-12px] 2xl:right-0 bottom-0 pointer-events-none z-30 w-[54%] lg:w-[58%] xl:w-[60%] max-w-[820px] xl:max-w-[900px]"
+            >
+              <img
+                src={imgMockupHands}
+                alt="Mockup mobile da solução Unicesumar Medicina"
+                className="w-full h-auto block select-none drop-shadow-[-25px_25px_50px_rgba(0,0,0,0.4)]"
+              />
+            </div>
+
+            {/* Mobile / Tablet Mockup Hands: Centered below metrics */}
+            <div className="lg:hidden w-full flex justify-center mt-6 pb-0">
+              <img
+                src={imgMockupHands}
+                alt="Mockup mobile da solução Unicesumar Medicina"
+                className="w-[300px] sm:w-[400px] md:w-[480px] h-auto block select-none"
+              />
             </div>
           </div>
         </div>
@@ -904,7 +843,6 @@ export default function UnicesumarMedicinaCase({ onNavigate }: CaseProps) {
         <StrategicApproach />
         <KeyDecisions />
         <TheSolution />
-        <ImpactSection />
         <Learnings />
         <NextCase onNavigate={onNavigate} />
       </main>
