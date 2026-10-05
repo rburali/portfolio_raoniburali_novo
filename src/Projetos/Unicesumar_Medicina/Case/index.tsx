@@ -183,9 +183,18 @@ function CaseHero() {
             </p>
           </div>
 
+          {/* Hero image banner */}
+          <div className="reveal-scale mt-8 sm:mt-12 w-full rounded-[16px] sm:rounded-[20px] overflow-hidden shadow-lg" style={{ transitionDelay: "200ms" }}>
+            <img
+              src={imgHeroMedicina}
+              alt="Composição visual da campanha do Vestibular de Medicina UniCesumar com estudante de medicina e logotipo oficial"
+              className="w-full h-auto block object-contain rounded-[16px] sm:rounded-[20px]"
+            />
+          </div>
+
           {/* Meta grid */}
           <div
-            className="reveal border-t border-[#99a1af] grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-[repeat(7,auto)] lg:justify-between gap-x-6 gap-y-8 lg:gap-y-0 py-8 mt-12 sm:mt-16 w-full"
+            className="reveal border-t border-[#99a1af] grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-[repeat(7,auto)] lg:justify-between gap-x-6 gap-y-8 lg:gap-y-0 py-8 mt-10 sm:mt-14 w-full"
             style={{ transitionDelay: "240ms" }}
           >
             {[
@@ -227,15 +236,6 @@ function CaseHero() {
                 </p>
               </div>
             ))}
-          </div>
-
-          {/* Hero image banner */}
-          <div className="reveal-scale mt-8 sm:mt-14 w-full rounded-[16px] sm:rounded-[20px] overflow-hidden shadow-lg" style={{ transitionDelay: "80ms" }}>
-            <img
-              src={imgHeroMedicina}
-              alt="Composição visual da campanha do Vestibular de Medicina UniCesumar com estudante de medicina e logotipo oficial"
-              className="w-full h-auto block object-contain rounded-[16px] sm:rounded-[20px]"
-            />
           </div>
         </div>
       </div>
