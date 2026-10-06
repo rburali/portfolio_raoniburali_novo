@@ -3,7 +3,6 @@ import svgPaths from "@/imports/CasoDeEstudoVestibularUnicesumar/svg-gqrgp2oyjk"
 import imgHeroMedicina from "@/imports/CasoDeEstudoVestibularUnicesumar/hero-composicao-medicina.png"
 import imgDecisao1 from "@/imports/CasoDeEstudoVestibularUnicesumar/decisao-1.png"
 import imgDecisao2 from "@/imports/CasoDeEstudoVestibularUnicesumar/decisao-2.png"
-import imgDecisao3 from "@/imports/CasoDeEstudoVestibularUnicesumar/decisao-3.png"
 import imgMockupPrincipal from "@/imports/CasoDeEstudoVestibularUnicesumar/Mockup_principal.png"
 import imgMockupHands from "@/imports/CasoDeEstudoVestibularUnicesumar/Mockup_hands.png"
 import imgProxCase from "@/imports/CasoDeEstudoVestibularUnicesumar/d9bb843826c7fe559fd5994aa1b57dfc59cff2b1.png"
@@ -503,7 +502,7 @@ function KeyDecisions() {
           <div className="bg-[#e5e7eb] h-px w-full" />
           <div className="reveal pt-14 sm:pt-20 mb-6">
             <p className="font-['Raleway:Medium',sans-serif] text-[#6a7282] text-[10px] tracking-[3px] uppercase leading-[15px]">
-              05 — Decisões-Chave
+              05 — KEY DECISIONS
             </p>
             <h2 className="font-['Raleway:ExtraBold',sans-serif] font-extrabold text-[#0a0a0a] text-[34px] sm:text-[46px] leading-[1.2] mt-4">
               As decisões que mudaram o projeto
@@ -511,34 +510,24 @@ function KeyDecisions() {
           </div>
 
           <DecisionBlock
-            num="DECISÃO 1"
+            num="DECISÃO 01"
             title="Priorizamos o problema certo"
             context="Existiam múltiplas hipóteses sobre o que causava a evasão na etapa inicial de cadastro."
             reason="A análise de dados mostrou que 68% dos candidatos desistiam no formulário excessivo. O problema não era atratividade da marca — era sobrecarga burocrática."
             result="Redirecionamos o fluxo para uma jornada em etapas simples antes de qualquer wireframe."
             image={imgDecisao1}
-            imageAlt="Tipografia Poppins"
+            imageAlt="Mockup da Landing Page em laptop"
           />
 
           <DecisionBlock
-            num="DECISÃO 2"
-            title="Substituímos o fluxo linear"
-            context="O fluxo existente tinha 7 etapas sequenciais com taxa de abandono progressiva."
-            reason="Pesquisa com calouros revelou que eles queriam ver a estrutura dos laboratórios reais antes de se comprometerem."
-            result="Criamos um modelo de revelação progressiva que reduziu o tempo para conversão em 40%."
-            image={imgDecisao2}
-            imageAlt="Mockup em laptop e smartphone"
-            imageLeft
-          />
-
-          <DecisionBlock
-            num="DECISÃO 3"
+            num="DECISÃO 02"
             title="Design System como produto interno"
             context="Cada campanha construía UI independentemente, criando inconsistência sistêmica e lentidão técnica."
             reason="Tratamos o design system como produto com tokens e componentes reutilizáveis, reduzindo tempo de desenvolvimento."
             result="Velocidade de lançamento de novas páginas aumentou 3x nas campanhas seguintes."
-            image={imgDecisao3}
-            imageAlt="Telas em smartphones"
+            image={imgDecisao2}
+            imageAlt="Guia de cores e tipografia Poppins"
+            imageLeft
           />
         </div>
       </div>
