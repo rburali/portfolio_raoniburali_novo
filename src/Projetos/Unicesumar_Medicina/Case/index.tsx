@@ -643,23 +643,7 @@ function TheSolution() {
 
 // ─── Learnings ────────────────────────────────────────────────────────────────
 
-const learnings = [
-  {
-    num: "01",
-    title: "Problema certo antes de solução certa",
-    body: "Passei as primeiras semanas questionando o escopo inicial. O problema real estava um nível acima do que estava sendo pedido. Aprender a diagnosticar antes de prescrever mudou completamente o resultado.",
-  },
-  {
-    num: "02",
-    title: "Design system é produto, não entregável",
-    body: "A diferença entre um design system que a empresa usa e um que fica no Figma é simples: senso de dono, planejamento e adoção ativa. Tudo o que eu tinha feito antes era documentação. Isso foi produto.",
-  },
-  {
-    num: "03",
-    title: "A decisão mais difícil é o que não fazer",
-    body: "Tivemos 12 oportunidades mapeadas. Escolhemos 3. As 9 restantes eram boas ideias no momento errado. Essa curadoria é o trabalho mais estratégico que um designer pode fazer.",
-  },
-]
+const learnings: { num: string; title: string; body: string }[] = []
 
 function Learnings() {
   return (
@@ -682,6 +666,12 @@ function Learnings() {
                 Cada projeto ensina algo que nenhum livro ensina. Aqui estão as três coisas que mudaram a forma como eu trabalho.
               </p>
             </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-14 sm:mt-16 w-full">
+            <div className="border-t border-[#e5e7eb]" />
+            <div className="hidden md:block border-t border-[#e5e7eb]" />
+            <div className="hidden md:block border-t border-[#e5e7eb]" />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-14 sm:mt-16 w-full stagger">
