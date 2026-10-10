@@ -109,7 +109,6 @@ function Nav({ onOpenContact }: { onOpenContact: () => void }) {
         "hero",
         "sobre",
         "projetos",
-        "metodo",
         "experiencia",
         "contato",
       ]
@@ -131,7 +130,6 @@ function Nav({ onOpenContact }: { onOpenContact: () => void }) {
   const links = [
     { id: "sobre", label: "Sobre", href: "#sobre" },
     { id: "projetos", label: "Projetos", href: "#projetos" },
-    { id: "metodo", label: "Método", href: "#metodo" },
     { id: "experiencia", label: "Experiência", href: "#experiencia" },
     { id: "contato", label: "Contato", href: "#contato" },
   ]
@@ -144,11 +142,10 @@ function Nav({ onOpenContact }: { onOpenContact: () => void }) {
         style={{ width: `${scrollProgress}%` }}
       />
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 px-6 md:px-12 py-5 flex items-center justify-between transition-all duration-300 ${
-          scrolled
-            ? "bg-[rgba(243,243,241,0.97)] shadow-sm backdrop-blur-md"
-            : "bg-[rgba(243,243,241,0.9)] backdrop-blur-sm"
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 px-6 md:px-12 py-5 flex items-center justify-between transition-all duration-300 ${scrolled
+          ? "bg-[rgba(243,243,241,0.97)] shadow-sm backdrop-blur-md"
+          : "bg-[rgba(243,243,241,0.9)] backdrop-blur-sm"
+          }`}
       >
         <a
           href="#hero"
@@ -166,11 +163,10 @@ function Nav({ onOpenContact }: { onOpenContact: () => void }) {
               <a
                 key={l.label}
                 href={l.href}
-                className={`font-['Raleway:Medium',sans-serif] text-[11.2px] tracking-[2.24px] uppercase transition-all duration-200 relative py-1 ${
-                  isActive
-                    ? "font-bold text-[#155dfc]"
-                    : "font-medium text-[#6a7282] hover:text-[#155dfc]"
-                }`}
+                className={`font-['Raleway:Medium',sans-serif] text-[11.2px] tracking-[2.24px] uppercase transition-all duration-200 relative py-1 ${isActive
+                  ? "font-bold text-[#155dfc]"
+                  : "font-medium text-[#6a7282] hover:text-[#155dfc]"
+                  }`}
               >
                 {l.label}
                 {isActive && (
@@ -213,19 +209,16 @@ function Nav({ onOpenContact }: { onOpenContact: () => void }) {
           aria-label="Menu"
         >
           <span
-            className={`block w-6 h-0.5 bg-[#03191d] transition-all duration-300 ${
-              open ? "rotate-45 translate-y-1.5" : ""
-            }`}
+            className={`block w-6 h-0.5 bg-[#03191d] transition-all duration-300 ${open ? "rotate-45 translate-y-1.5" : ""
+              }`}
           />
           <span
-            className={`block w-6 h-0.5 bg-[#03191d] transition-all duration-300 ${
-              open ? "opacity-0" : ""
-            }`}
+            className={`block w-6 h-0.5 bg-[#03191d] transition-all duration-300 ${open ? "opacity-0" : ""
+              }`}
           />
           <span
-            className={`block w-6 h-0.5 bg-[#03191d] transition-all duration-300 ${
-              open ? "-rotate-45 -translate-y-1.5" : ""
-            }`}
+            className={`block w-6 h-0.5 bg-[#03191d] transition-all duration-300 ${open ? "-rotate-45 -translate-y-1.5" : ""
+              }`}
           />
         </button>
 
@@ -244,11 +237,10 @@ function Nav({ onOpenContact }: { onOpenContact: () => void }) {
                   key={l.label}
                   href={l.href}
                   onClick={() => setOpen(false)}
-                  className={`font-['Raleway:Medium',sans-serif] text-base tracking-[2px] uppercase transition-colors ${
-                    activeSection === l.id
-                      ? "font-bold text-[#155dfc]"
-                      : "font-medium text-[#03191d] hover:text-[#155dfc]"
-                  }`}
+                  className={`font-['Raleway:Medium',sans-serif] text-base tracking-[2px] uppercase transition-colors ${activeSection === l.id
+                    ? "font-bold text-[#155dfc]"
+                    : "font-medium text-[#03191d] hover:text-[#155dfc]"
+                    }`}
                 >
                   {l.label}
                 </a>
@@ -631,11 +623,10 @@ function MarqueeSection() {
         {doubled.map((item, i) => (
           <span
             key={i}
-            className={`font-['Raleway:Light',sans-serif] font-light text-[24px] tracking-[-0.4px] mx-8 ${
-              item === "✦"
-                ? "text-[#00e7ff] opacity-60 text-[19px] mx-3"
-                : "text-[rgba(255,255,255,0.35)]"
-            }`}
+            className={`font-['Raleway:Light',sans-serif] font-light text-[24px] tracking-[-0.4px] mx-8 ${item === "✦"
+              ? "text-[#00e7ff] opacity-60 text-[19px] mx-3"
+              : "text-[rgba(255,255,255,0.35)]"
+              }`}
           >
             {item}
           </span>
@@ -1067,9 +1058,8 @@ function ProjectCard({
   return (
     <div
       ref={ref}
-      className={`reveal ${
-        visible ? "in-view" : ""
-      } group grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center`}
+      className={`reveal ${visible ? "in-view" : ""
+        } group grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center`}
     >
       {/* Image side */}
       <a
@@ -1080,9 +1070,8 @@ function ProjectCard({
             onNavigate(project.route)
           }
         }}
-        className={`${
-          project.reversed ? "md:order-last" : ""
-        } block relative w-full aspect-[4/3] rounded-[20px] overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 cursor-pointer`}
+        className={`${project.reversed ? "md:order-last" : ""
+          } block relative w-full aspect-[4/3] rounded-[20px] overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 cursor-pointer`}
         style={{ backgroundColor: project.imgBg }}
       >
         {project.logoElement && (
@@ -1224,19 +1213,17 @@ function ProjectsSection({
                   whileTap={{ scale: 0.97 }}
                   onClick={() => setFilter(cat.id as any)}
                   type="button"
-                  className={`flex items-center gap-2 px-4 py-2 rounded-full font-['Raleway:Bold',sans-serif] text-[11px] tracking-wider uppercase transition-all duration-200 cursor-pointer ${
-                    active
-                      ? "bg-[#155dfc] text-white shadow-sm"
-                      : "bg-[#f3f3f1] text-[#03191d]/70 hover:bg-[#ebebeb] hover:text-[#03191d]"
-                  }`}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-full font-['Raleway:Bold',sans-serif] text-[11px] tracking-wider uppercase transition-all duration-200 cursor-pointer ${active
+                    ? "bg-[#155dfc] text-white shadow-sm"
+                    : "bg-[#f3f3f1] text-[#03191d]/70 hover:bg-[#ebebeb] hover:text-[#03191d]"
+                    }`}
                 >
                   <span>{cat.label}</span>
                   <span
-                    className={`text-[10px] px-1.5 py-0.5 rounded-full ${
-                      active
-                        ? "bg-white/20 text-white"
-                        : "bg-black/5 text-[#03191d]"
-                    }`}
+                    className={`text-[10px] px-1.5 py-0.5 rounded-full ${active
+                      ? "bg-white/20 text-white"
+                      : "bg-black/5 text-[#03191d]"
+                      }`}
                   >
                     {cat.count}
                   </span>
@@ -1279,9 +1266,8 @@ function ManifestoBlock({ quote, bold }: ManifestoProps) {
     <div className="bg-[#155dfc] py-24 px-6 md:px-12 border-t border-b border-[rgba(255,255,255,0.05)] flex items-center justify-center min-h-[300px] md:min-h-[420px]">
       <div
         ref={ref}
-        className={`reveal ${
-          visible ? "in-view" : ""
-        } max-w-[900px] text-center`}
+        className={`reveal ${visible ? "in-view" : ""
+          } max-w-[900px] text-center`}
       >
         <p className="font-['Raleway:Regular',sans-serif] font-normal text-[clamp(24px,4vw,48px)] leading-[1.2] text-white">
           <span className="text-[#00e7ff]">"</span>
@@ -1306,9 +1292,8 @@ function AboutSection({ onOpenCurriculum }: { onOpenCurriculum: () => void }) {
     >
       <div
         ref={ref}
-        className={`reveal ${
-          visible ? "in-view" : ""
-        } max-w-[1400px] mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-16`}
+        className={`reveal ${visible ? "in-view" : ""
+          } max-w-[1400px] mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-16`}
       >
         {/* ── Left: text ── */}
         <div className="flex flex-col w-full lg:w-[629px] shrink-0">
@@ -1445,9 +1430,8 @@ function TrustSection() {
     <div className="bg-[#f2f2f2] py-[80px]" id="resultados">
       <div
         ref={ref}
-        className={`reveal ${
-          visible ? "in-view" : ""
-        } max-w-[1200px] mx-auto px-6`}
+        className={`reveal ${visible ? "in-view" : ""
+          } max-w-[1200px] mx-auto px-6`}
       >
         {/* ── Desktop row ── */}
         <div className="hidden md:flex items-center">
@@ -1551,9 +1535,8 @@ function ExperienceRow({ e, i }: { e: ExpEntry; i: number }) {
   return (
     <div
       ref={itemRef}
-      className={`reveal ${
-        revealed ? "in-view" : ""
-      } delay-${Math.min((i + 1) * 100, 500)} flex flex-col sm:flex-row sm:items-center justify-between gap-4 py-6 group hover:bg-[#f9f9f9] px-4 -mx-4 rounded-xl transition-colors duration-200`}
+      className={`reveal ${revealed ? "in-view" : ""
+        } delay-${Math.min((i + 1) * 100, 500)} flex flex-col sm:flex-row sm:items-center justify-between gap-4 py-6 group hover:bg-[#f9f9f9] px-4 -mx-4 rounded-xl transition-colors duration-200`}
     >
       <p className="font-['Raleway:SemiBold',sans-serif] font-semibold text-[10.4px] tracking-[2.6px] uppercase text-[#155dfc] shrink-0 w-[170px]">
         {e.period}
@@ -1692,17 +1675,14 @@ function MetodoCard({
   return (
     <div
       ref={cardRef}
-      className={`reveal ${
-        revealed ? "in-view" : ""
-      } delay-${i * 100 + 100} bg-[rgba(21,93,252,0.4)] border border-[rgba(139,174,250,0.18)] ${
-        i === 0
+      className={`reveal ${revealed ? "in-view" : ""
+        } delay-${i * 100 + 100} bg-[rgba(21,93,252,0.4)] border border-[rgba(139,174,250,0.18)] ${i === 0
           ? "rounded-tl-[16px] rounded-bl-[16px] lg:rounded-tr-none lg:rounded-br-none"
           : i === total - 1
             ? "rounded-tr-[16px] rounded-br-[16px] lg:rounded-tl-none lg:rounded-bl-none"
             : "lg:border-l-2 lg:border-l-[#155dfc] lg:border-t-0 lg:border-r-0 lg:border-b-0"
-      } ${
-        i > 0 ? "lg:border-l-2 lg:border-l-[#155dfc]" : ""
-      } p-6 flex flex-col gap-3`}
+        } ${i > 0 ? "lg:border-l-2 lg:border-l-[#155dfc]" : ""
+        } p-6 flex flex-col gap-3`}
     >
       <div className="h-[32px] flex items-center">
         <p
@@ -1795,7 +1775,7 @@ function MetodoSection() {
             Um processo estratégico para transformar história, propósito e
             identidade em autenticidade.
             <br />
-            Transforme tudo o que você já é, para um posicionamento que o mundo
+            Transforme tudo o que você e sua empresa já são, em um posicionamento que o mundo
             perceba você.
           </p>
         </div>
@@ -1814,7 +1794,7 @@ function MetodoSection() {
 const testimonials = [
   {
     quote:
-      '"Quero deixar uma indicação do trabalho do Raoni, designer com quem tenho a satisfação de trabalhar há mais de 20 anos\n\nRecentemente, foi responsável pelo desenvolvimento do meu site e de materiais que fazem parte da minha apresentação profissional. Mais uma vez, pude contar com sua sensibilidade, dedicação e capacidade de compreender o que eu buscava para cada projeto."',
+      '"Quero deixar uma indicação do trabalho do Raoni, designer com quem tenho a satisfação de trabalhar há mais de 20 anos. Recentemente, foi responsável pelo desenvolvimento do meu site e de materiais que fazem parte da minha apresentação profissional. Mais uma vez, pude contar com sua sensibilidade, dedicação e capacidade de compreender o que eu buscava para cada projeto."',
     name: "Paola Lopes",
     role: "Diretora de arte/Designer e Ilustradora",
   },
@@ -1861,9 +1841,8 @@ function TestimonialCard({
   return (
     <div
       ref={cardRef}
-      className={`reveal ${
-        revealed ? "in-view" : ""
-      } delay-${i * 100 + 100} bg-black p-8 sm:p-10 rounded-[20px] flex flex-col justify-between hover:scale-[1.02] transition-transform duration-300`}
+      className={`reveal ${revealed ? "in-view" : ""
+        } delay-${i * 100 + 100} bg-black p-8 sm:p-10 rounded-[20px] flex flex-col justify-between hover:scale-[1.02] transition-transform duration-300`}
     >
       <p className="font-['Raleway:Light',sans-serif] font-light text-[15px] sm:text-[16px] leading-[1.7] text-white flex-1 whitespace-pre-line">
         {t.quote}
@@ -1938,9 +1917,8 @@ function ContactSection({
     >
       <div
         ref={ref}
-        className={`reveal ${
-          visible ? "in-view" : ""
-        } max-w-[900px] mx-auto text-center flex flex-col items-center gap-8`}
+        className={`reveal ${visible ? "in-view" : ""
+          } max-w-[900px] mx-auto text-center flex flex-col items-center gap-8`}
       >
         <p className="font-['Raleway:SemiBold',sans-serif] font-semibold text-[10.4px] tracking-[2.6px] uppercase text-[#82a9ff]">
           Contato
@@ -2604,7 +2582,6 @@ export function HomePage({
         quote="Interface é superfície. "
         bold="Experiência é memória."
       />
-      <MetodoSection />
       <TestimonialsSection />
       <ContactSection
         onOpenContact={() => setContactOpen(true)}

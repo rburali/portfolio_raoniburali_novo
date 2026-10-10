@@ -178,7 +178,7 @@ function CaseHero() {
           {/* Subtitle */}
           <div className="reveal pt-6 sm:pt-8" style={{ transitionDelay: "160ms" }}>
             <p className="font-['Raleway:Regular',sans-serif] font-normal text-[#6a7282] text-[16px] sm:text-[20px] leading-[1.6] max-w-[937px]">
-              Descubra como desenvolvemos uma Landing Page para o curso de Medicina e conseguimos uma conversão de 80% dos leads na ponta do funil para uma campanha de mídia milionária.
+              Desenvolvi uma Landing Page para o curso de Medicina e conseguimos uma conversão de 80% dos leads na ponta do funil para uma campanha de mídia milionária.
             </p>
           </div>
 
@@ -255,7 +255,7 @@ function ContextSection() {
             {/* Left: heading */}
             <div className="lg:col-span-5 reveal-left">
               <p className="font-['Raleway:Medium',sans-serif] text-[#6a7282] text-[10px] tracking-[3px] uppercase leading-[15px]">
-                CONTEXTO
+                01-CONTEXTO
               </p>
               <h2 className="font-['Raleway:ExtraBold',sans-serif] font-extrabold text-[#0a0a0a] text-[34px] sm:text-[44px] leading-[1.2] mt-4">
                 O que estava acontecendo?
@@ -311,7 +311,7 @@ function TheChallengeSection() {
         <div className="flex flex-col items-start max-w-[1320px] px-6 sm:px-12 lg:px-16 w-full">
           <div className="reveal">
             <p className="font-['Raleway:Medium',sans-serif] text-[#f3f3f1] text-[10px] tracking-[3px] uppercase leading-[15px] opacity-70">
-              03 — The Challenge
+              02 — O desafio
             </p>
             <h2 className="font-['Raleway:ExtraBold',sans-serif] font-extrabold text-[#f3f3f1] text-[36px] sm:text-[48px] leading-[1.2] mt-4">
               O desafio
@@ -358,7 +358,7 @@ function StrategicApproach() {
             {/* Left: heading */}
             <div className="lg:col-span-5 reveal-left">
               <p className="font-['Raleway:Medium',sans-serif] text-[#6a7282] text-[10px] tracking-[3px] uppercase leading-[15px]">
-                04 — Abordagem Estratégica
+                03 — Abordagem Estratégica
               </p>
               <h2 className="font-['Raleway:ExtraBold',sans-serif] font-extrabold text-[#0a0a0a] text-[34px] sm:text-[46px] leading-[1.2] mt-4">
                 Como transformamos o problema em direção
@@ -502,7 +502,7 @@ function KeyDecisions() {
           <div className="bg-[#e5e7eb] h-px w-full" />
           <div className="reveal pt-14 sm:pt-20 mb-6">
             <p className="font-['Raleway:Medium',sans-serif] text-[#6a7282] text-[10px] tracking-[3px] uppercase leading-[15px]">
-              05 — KEY DECISIONS
+              04 — DECISÕES CHAVES
             </p>
             <h2 className="font-['Raleway:ExtraBold',sans-serif] font-extrabold text-[#0a0a0a] text-[34px] sm:text-[46px] leading-[1.2] mt-4">
               As decisões que mudaram o projeto
@@ -545,7 +545,7 @@ function TheSolution() {
           {/* 06 — The Solution Header */}
           <div className="reveal">
             <p className="font-['Raleway:Medium',sans-serif] text-[#afc8ff] text-[10px] tracking-[3px] uppercase leading-[15px]">
-              06 — THE SOLUTION
+              05 — A SOLUÇÃO
             </p>
             <h2 className="font-['Raleway:ExtraBold',sans-serif] font-extrabold text-[#f3f3f1] text-[36px] sm:text-[48px] leading-[1.2] mt-4">
               A solução
@@ -570,7 +570,7 @@ function TheSolution() {
             <div className="w-full lg:max-w-[580px] xl:max-w-[640px] pt-8 sm:pt-12 lg:pt-14 pb-12 sm:pb-16 lg:pb-20">
               <div className="reveal">
                 <p className="font-['Raleway:Medium',sans-serif] text-[#afc8ff] text-[10px] tracking-[3px] uppercase leading-[15px]">
-                  07 — IMPACT
+                  07— IMPACTO
                 </p>
                 <h2 className="font-['Raleway:ExtraBold',sans-serif] font-extrabold text-[#f3f3f1] text-[36px] sm:text-[48px] leading-[1.2] mt-4">
                   Impacto
@@ -655,7 +655,7 @@ function Learnings() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 mt-14 sm:mt-20 w-full">
             <div className="lg:col-span-5 reveal-left">
               <p className="font-['Raleway:Medium',sans-serif] text-[#6a7282] text-[10px] tracking-[3px] uppercase leading-[15px]">
-                08 — Aprendizados
+                08 — APRENDIZADOS
               </p>
               <h2 className="font-['Raleway:ExtraBold',sans-serif] font-extrabold text-[#0a0a0a] text-[34px] sm:text-[46px] leading-[1.2] mt-4">
                 O que eu aprendi
