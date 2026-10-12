@@ -149,7 +149,7 @@ function VerSiteNoArButton({ className = "" }: { className?: string }) {
 
 function CaseHero() {
   return (
-    <div className="bg-[#f3f3f1] w-full pt-10 sm:pt-16 pb-12">
+    <div className="bg-[#f3f3f1] w-full pt-10 sm:pt-16 pb-0">
       <div className="flex flex-col items-center w-full">
         <div className="flex flex-col items-start max-w-[1320px] px-6 sm:px-12 lg:px-16 w-full">
           {/* Label row */}
@@ -193,44 +193,44 @@ function CaseHero() {
 
           {/* Meta grid */}
           <div
-            className="reveal border-t border-[#99a1af] grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-[repeat(7,auto)] lg:justify-between gap-x-6 gap-y-8 lg:gap-y-0 py-8 mt-10 sm:mt-14 w-full"
+            className="reveal border-t border-b border-[#99a1af] grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-[repeat(7,auto)] lg:justify-between gap-x-6 gap-y-8 lg:gap-y-0 py-8 sm:py-9 mt-10 sm:mt-14 w-full"
             style={{ transitionDelay: "240ms" }}
           >
             {[
-              { label: "Cliente", value: "Vitru Educação" },
-              { label: "Ano", value: "2026" },
+              { label: "CLIENT", value: "Vitru Educação" },
+              { label: "YEAR", value: "2026" },
               {
-                label: "Função",
+                label: "ROLE",
                 value: (
                   <>
-                    Product Designer<br />Sênior
+                    Senior Product<br />Designer
                   </>
                 ),
               },
               {
-                label: "Equipe",
+                label: "TEAM",
                 value: (
                   <>
-                    1 Designer · 1 Dev · 1<br />PO
+                    1 Designer -<br />1 Dev - 1 PO
                   </>
                 ),
               },
-              { label: "Duração", value: "30 Dias" },
+              { label: "TIMELINE", value: "30 Dias" },
               {
-                label: "Escopo",
+                label: "ESCOPO",
                 value: (
                   <>
-                    Discovery, Estratégia,<br />UI, Dev
+                    Discovery, Strategy,<br />UI, Dev
                   </>
                 ),
               },
-              { label: "Plataforma", value: "Web · Mobile" },
+              { label: "PLATAFORMA", value: "Web · Mobile" },
             ].map(({ label, value }) => (
               <div key={label} className="flex flex-col">
-                <p className="font-['Raleway:Medium',sans-serif] font-medium text-[#155dfc] text-[9px] tracking-[2.5px] uppercase leading-[13.5px]">
+                <p className="font-['Raleway:Medium',sans-serif] font-medium text-[#155dfc] text-[9.5px] sm:text-[10px] tracking-[2.5px] uppercase leading-[14px]">
                   {label}
                 </p>
-                <p className="font-['Raleway:SemiBold',sans-serif] font-semibold text-[#0a0a0a] text-[13.5px] sm:text-[14px] leading-[19px] mt-1.5">
+                <p className="font-['Raleway:SemiBold',sans-serif] font-semibold text-[#0a0a0a] text-[13.5px] sm:text-[14px] leading-[19px] mt-2">
                   {value}
                 </p>
               </div>
@@ -246,33 +246,39 @@ function CaseHero() {
 
 function ContextSection() {
   return (
-    <div className="bg-[#f3f3f1] w-full py-16 sm:py-24">
+    <div className="bg-[#f3f3f1] w-full pt-16 sm:pt-20 pb-16 sm:pb-24">
       <div className="flex flex-col items-center w-full">
         <div className="flex flex-col items-start max-w-[1320px] px-6 sm:px-12 lg:px-16 w-full">
-          <div className="bg-[#e5e7eb] h-px w-full" />
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 mt-14 sm:mt-20 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 w-full">
             {/* Left: heading */}
             <div className="lg:col-span-5 reveal-left">
-              <p className="font-['Raleway:Medium',sans-serif] text-[#6a7282] text-[10px] tracking-[3px] uppercase leading-[15px]">
-                01-CONTEXTO
+              <p className="font-['Raleway:Medium',sans-serif] text-[#6a7282] text-[10px] sm:text-[11px] tracking-[3px] uppercase leading-[15px]">
+                01 - CONTEXTO
               </p>
-              <h2 className="font-['Raleway:ExtraBold',sans-serif] font-extrabold text-[#0a0a0a] text-[34px] sm:text-[44px] leading-[1.2] mt-4">
-                O que estava acontecendo?
+              <h2 className="font-['Raleway:ExtraBold',sans-serif] font-extrabold text-[#0a0a0a] text-[36px] sm:text-[44px] lg:text-[48px] leading-[1.15] mt-4 sm:mt-5 max-w-[420px]">
+                O que estava<br />acontecendo?
               </h2>
             </div>
 
             {/* Right: body */}
             <div className="lg:col-span-7 reveal-right" style={{ transitionDelay: "120ms" }}>
-              <p className="font-['Raleway:Regular',sans-serif] text-[#6a7282] text-[15.5px] sm:text-[16px] leading-[1.7] max-w-[669px]">
-                O processo seletivo do vestibular de Medicina da UniCesumar é uma das maiores captações da instituição, exigindo campanhas de mídia expressivas. No entanto, a antiga experiência digital gerava alta evasão de potenciais candidatos devido a formulários complexos, jornada de fluxo quebrada e sobrecarga cognitiva no preenchimento do cadastro.
+              <p className="font-['Raleway:Regular',sans-serif] text-[#6a7282] text-[15.5px] sm:text-[16px] leading-[1.7] max-w-[670px]">
+                O processo seletivo do vestibular de Medicina da UniCesumar é uma das maiores captações da instituição, exigindo campanhas de midia expressivas. No entanto, a antiga experiência digital gerava alta evasão de potenciais candidatos devido a formulários complexos, jornada de fluxo quebrada e sobrecarga cognitiva no preenchimento do cadastro.
               </p>
-              <p className="font-['Raleway:Regular',sans-serif] text-[#6a7282] text-[15.5px] sm:text-[16px] leading-[1.7] max-w-[669px] mt-6">
+              <p className="font-['Raleway:Regular',sans-serif] text-[#6a7282] text-[15.5px] sm:text-[16px] leading-[1.7] max-w-[670px] mt-6">
                 Era importante comunicar a qualidade do curso de Medicina com o intuito de gerar a inscrição para o processo seletivo na página, transformando tráfego pago em conversão para contato comercial futuro e uma nutrição do lead pela equipe comercial.
               </p>
-              <div className="border-l-[2px] border-[#155dfc] pl-6 sm:pl-8 py-2 mt-10 sm:mt-14">
-                <p className="font-['Raleway:Light',sans-serif] font-light text-[#0a0a0a] text-[22px] sm:text-[28px] leading-[1.35] max-w-[636px]">
-                  "Não basta gerar tráfego qualificado se a experiência de conversão não acolhe e orienta o candidato na decisão de se inscrever na escolha mais importante de sua vida profissional."
+              <div className="border-l-[2px] border-[#155dfc] pl-6 sm:pl-8 py-1 mt-10 sm:mt-12">
+                <p className="font-['Raleway:Light',sans-serif] font-light text-[#0a0a0a] text-[22px] sm:text-[26px] lg:text-[28px] leading-[1.35] max-w-[660px]">
+                  "Não basta gerar tráfego qualificado se a{" "}
+                  <br className="hidden md:inline" />
+                  experiência de conversão não acolhe e{" "}
+                  <br className="hidden md:inline" />
+                  orienta o candidato na decisão de se inscrever{" "}
+                  <br className="hidden md:inline" />
+                  na escolha mais importante de sua vida{" "}
+                  <br className="hidden md:inline" />
+                  profissional."
                 </p>
               </div>
             </div>
