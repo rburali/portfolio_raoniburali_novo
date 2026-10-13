@@ -91,6 +91,47 @@ function Nav({ onOpenContact }: { onOpenContact: () => void }) {
   const [activeSection, setActiveSection] = useState("hero")
   const [scrollProgress, setScrollProgress] = useState(0)
 
+  const isManualScrollRef = useRef(false)
+  const scrollTimeoutRef = useRef<number | null>(null)
+
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    sectionId: string,
+  ) => {
+    e.preventDefault()
+    setActiveSection(sectionId)
+    isManualScrollRef.current = true
+    if (scrollTimeoutRef.current) {
+      clearTimeout(scrollTimeoutRef.current)
+    }
+
+    if (sectionId === "hero") {
+      window.scrollTo({ top: 0, behavior: "smooth" })
+      if (typeof window !== "undefined") {
+        window.history.pushState(null, "", "/")
+      }
+    } else {
+      const el = document.getElementById(sectionId)
+      if (el) {
+        const headerOffset = 80
+        const elementPosition = el.getBoundingClientRect().top + window.scrollY
+        const offsetPosition = Math.max(0, elementPosition - headerOffset)
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        })
+        if (typeof window !== "undefined") {
+          window.history.pushState(null, "", `#${sectionId}`)
+        }
+      }
+    }
+
+    scrollTimeoutRef.current = window.setTimeout(() => {
+      isManualScrollRef.current = false
+    }, 1200)
+  }
+
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 20)
@@ -104,27 +145,52 @@ function Nav({ onOpenContact }: { onOpenContact: () => void }) {
         )
       }
 
-      // Scrollspy
+      if (isManualScrollRef.current) return
+
+      // Top of page (Hero)
+      if (window.scrollY < 120) {
+        setActiveSection("hero")
+        return
+      }
+
+      // Scrollspy: Bottom of page check
+      if (
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 80
+      ) {
+        setActiveSection("contato")
+        return
+      }
+
+      // Scrollspy: Sections in physical top-to-bottom page order
       const sections = [
         "hero",
-        "sobre",
         "projetos",
+        "sobre",
         "experiencia",
         "contato",
       ]
-      const scrollPosition = window.scrollY + 160
+      const triggerPoint = 100 + window.innerHeight * 0.25
 
       for (let i = sections.length - 1; i >= 0; i--) {
         const el = document.getElementById(sections[i])
-        if (el && el.offsetTop <= scrollPosition) {
-          setActiveSection(sections[i])
-          break
+        if (el) {
+          const rect = el.getBoundingClientRect()
+          if (rect.top <= triggerPoint) {
+            setActiveSection(sections[i])
+            break
+          }
         }
       }
     }
     window.addEventListener("scroll", onScroll, { passive: true })
     onScroll()
-    return () => window.removeEventListener("scroll", onScroll)
+    return () => {
+      window.removeEventListener("scroll", onScroll)
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current)
+      }
+    }
   }, [])
 
   const links = [
@@ -149,6 +215,7 @@ function Nav({ onOpenContact }: { onOpenContact: () => void }) {
       >
         <a
           href="#hero"
+          onClick={(e) => handleNavClick(e, "hero")}
           className="flex items-center gap-2 select-none"
           aria-label="Home"
         >
@@ -162,7 +229,9 @@ function Nav({ onOpenContact }: { onOpenContact: () => void }) {
             return (
               <a
                 key={l.label}
+                id={`nav-link-${l.id}`}
                 href={l.href}
+                onClick={(e) => handleNavClick(e, l.id)}
                 className={`font-['Raleway:Medium',sans-serif] text-[11.2px] tracking-[2.24px] uppercase transition-all duration-200 relative py-1 ${isActive
                   ? "font-bold text-[#155dfc]"
                   : "font-medium text-[#6a7282] hover:text-[#155dfc]"
@@ -236,7 +305,10 @@ function Nav({ onOpenContact }: { onOpenContact: () => void }) {
                 <a
                   key={l.label}
                   href={l.href}
-                  onClick={() => setOpen(false)}
+                  onClick={(e) => {
+                    setOpen(false)
+                    handleNavClick(e, l.id)
+                  }}
                   className={`font-['Raleway:Medium',sans-serif] text-base tracking-[2px] uppercase transition-colors ${activeSection === l.id
                     ? "font-bold text-[#155dfc]"
                     : "font-medium text-[#03191d] hover:text-[#155dfc]"
