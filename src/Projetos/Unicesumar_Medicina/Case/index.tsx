@@ -520,16 +520,16 @@ function KeyDecisions() {
             title="Priorizamos o problema certo"
             context="Existiam múltiplas hipóteses sobre o que causava a evasão na etapa inicial de cadastro."
             reason="A análise de dados mostrou que 68% dos candidatos desistiam no formulário excessivo. O problema não era atratividade da marca — era sobrecarga burocrática."
-            result="Redirecionamos o fluxo para uma jornada em etapas simples antes de qualquer wireframe."
+            result="Redirecionamos o fluxo para uma jornada em etapas simples, focando a conversão e o direcionamento de leads para a equipe comercial."
             image={imgDecisao1}
             imageAlt="Mockup da Landing Page em laptop"
           />
 
           <DecisionBlock
             num="DECISÃO 02"
-            title="Design System como produto interno"
+            title="Padronização visual integrada ao portal institucional"
             context="Cada campanha construía UI independentemente, criando inconsistência sistêmica e lentidão técnica."
-            reason="Tratamos o design system como produto com tokens e componentes reutilizáveis, reduzindo tempo de desenvolvimento."
+            reason="Tratamos o visual como uma extensão direta do portal institucional, integrando uma plataforma externa para otimizar a conversão e o atendimento da equipe comercial aos candidatos interessados no vestibular."
             result="Velocidade de lançamento de novas páginas aumentou 3x nas campanhas seguintes."
             image={imgDecisao2}
             imageAlt="Guia de cores e tipografia Poppins"
@@ -602,10 +602,10 @@ function TheSolution() {
                     PRODUCT
                   </p>
                   <p className="metric-value font-['Raleway:ExtraBold',sans-serif] font-extrabold text-white text-[56px] sm:text-[76px] tracking-[-1.5px] leading-tight mt-2 sm:mt-3">
-                    3×
+                    +45%
                   </p>
                   <p className="font-['Raleway:Regular',sans-serif] text-white/90 text-[14px] sm:text-[15px] leading-[22px] mt-3">
-                    Do tempo que o usuário ficou na página
+                    Aumento no volume de acessos e no tempo de permanência na página.
                   </p>
                 </div>
               </div>
@@ -616,7 +616,7 @@ function TheSolution() {
                   DESDOBRAMENTOS
                 </p>
                 <p className="font-['Raleway:Medium',sans-serif] text-[#00a6e2] text-[16px] sm:text-[18px] leading-[1.6] mt-3 max-w-[500px]">
-                  A metodologia aplicada neste projeto foi adotada como padrão para os próximos três grandes projetos da empresa.
+                  A metodologia aplicada neste projeto foi adotada como padrão para os próximos três grandes projetos da empresa, além de estruturar a nova PDP do curso de Medicina que será lançada junto ao novo portal institucional.
                 </p>
               </div>
             </div>
